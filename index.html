@@ -29,14 +29,11 @@
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{width:min(1100px, 92vw); margin:0 auto}
-    /* Top bar */
     header.top{position:sticky; top:0; z-index:10; background:rgba(247,248,250,.75); backdrop-filter: blur(8px); border-bottom:1px solid var(--border)}
     .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
     nav a{color:var(--text); padding:8px 10px; border-radius:8px}
     nav a:hover{background:#eef2f7; text-decoration:none}
-    /* Cover */
     .cover{height:min(36vh, 360px); background:#ddd url('assets/cover.jpg') center/cover no-repeat}
-    /* Title row */
     .titlerow{display:grid; grid-template-columns: 1fr 220px; gap:24px; margin-top: -36px; padding:18px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
     h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 6px}
     .intro{color:#374151}
@@ -47,7 +44,6 @@
     @media (max-width:900px){ .titlerow{ grid-template-columns:1fr } }
     section{padding:28px 0}
     h2{font-size:1.4rem; margin:0 0 12px}
-    /* Projects grid */
     .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
     .card{grid-column:span 4; background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
     .thumb{aspect-ratio:16/9; background:#e5e7eb url('assets/project-thumb.jpg') center/cover no-repeat}
@@ -60,7 +56,6 @@
     .btn:hover{background:#eef2f7}
     @media (max-width:1000px){ .card{grid-column:span 6} }
     @media (max-width:680px){ .card{grid-column:span 12} }
-    /* Experience + Certificates */
     .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
     @media (max-width:900px){ .two{grid-template-columns:1fr} }
     .panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow)}
@@ -68,7 +63,6 @@
     .row{display:flex; justify-content:space-between; gap:10px; align-items:center; border:1px solid var(--border); background:#fff; border-radius:12px; padding:10px 12px}
     .row .place{font-weight:700}
     .row .where{color:#6b7280}
-    /* Skills */
     .tabs{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap}
     .tab{padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:#fff; cursor:pointer}
     .tab.active{background:#eef2f7}
@@ -78,7 +72,6 @@
     .tile .cap{padding:10px 12px; font-weight:600}
     @media (max-width:1000px){ .tile{grid-column:span 4} }
     @media (max-width:680px){ .tile{grid-column:span 6} }
-    /* Contact */
     .contact{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
     .contact a{word-break:break-all}
     footer{padding:28px 0; color:#6b7280}
@@ -97,32 +90,27 @@
     </div>
   </header>
 
-  <!-- Cover -->
   <div class="cover" title="Replace with assets/cover.jpg"></div>
 
   <main class="wrap">
-    <!-- Title & Intro -->
     <section>
       <div class="titlerow">
         <div>
           <h1>Professional Portfolio</h1>
           <p class="intro">
-            As a creative technologist and Unreal Engine specialist, I design immersive VR simulations that bridge real‑world challenges
+            As a creative technologist and Unreal Engine specialist, I design immersive VR simulations that bridge real-world challenges
             with virtual innovation. My work spans disaster response planning at IIT Bombay, emergency evacuation modeling at the
-            University of Tennessee, and VR‑based training in healthcare and cultural storytelling. I’m passionate about AR/VR,
-            real‑time 3D, and human‑centered design—focused on simulation, interaction, and digital twins. I thrive on solving complex
-            problems through technical precision, creative thinking, and collaborative execution.
+            University of Tennessee, and VR-based training in healthcare and cultural storytelling. I’m passionate about AR/VR,
+            real-time 3D, and human-centered design—focused on simulation, interaction, and digital twins.
           </p>
         </div>
         <div class="portrait" title="Replace with assets/portrait.jpg"></div>
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="cards">
-        <!-- Project Card 1 -->
         <article class="card">
           <div class="thumb" title="Replace with assets/project-truck.jpg"></div>
           <div class="meta">
@@ -133,13 +121,26 @@
               <span class="tag">Virtual Reality</span>
             </div>
             <div class="actions">
-              <a class="btn" href="https://github.com/Jeeva000111/Portfolio/blob/b6600de32b23324c91d12a38142b88a8096a9c47/project/asters.html">Open</a>
+              <a class="btn" href="/projects/asters.html">Open</a>
               <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
             </div>
           </div>
         </article>
 
-        <!-- Project Card 2 -->
+        <article class="card">
+          <div class="thumb" title="Replace with assets/project-maharashtra.jpg"></div>
+          <div class="meta">
+            <div class="title">Maharashtra Truck Simulation</div>
+            <div class="tags">
+              <span class="tag">Simulation</span>
+              <span class="tag">VR</span>
+            </div>
+            <div class="actions">
+              <a class="btn" href="/projects/maharashtra-truck.html">Open</a>
+            </div>
+          </div>
+        </article>
+
         <article class="card">
           <div class="thumb" title="Replace with assets/project-dental.jpg"></div>
           <div class="meta">
@@ -149,13 +150,12 @@
               <span class="tag">Virtual Reality</span>
             </div>
             <div class="actions">
-              <a class="btn" href="Professional-Portfolio/projects/dental-vr.html">Open</a>
+              <a class="btn" href="/projects/dental-vr.html">Open</a>
               <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/q3jmrM6cjmI">Video</a>
             </div>
           </div>
         </article>
 
-        <!-- Project Card 3 -->
         <article class="card">
           <div class="thumb" title="Replace with assets/project-ravana.jpg"></div>
           <div class="meta">
@@ -165,55 +165,14 @@
               <span class="tag">Video Production</span>
             </div>
             <div class="actions">
-              <a class="btn" href="Professional-Portfolio/projects/ravana-vr.html">Open</a>
+              <a class="btn" href="/projects/ravana-vr.html">Open</a>
               <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/1x3rMaC1Cc4">Video</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- More placeholders -->
-        <article class="card">
-          <div class="thumb" title="Replace with assets/project-4.jpg"></div>
-          <div class="meta">
-            <div class="title">Showreel / Extra</div>
-            <div class="tags">
-              <span class="tag">Showcase</span>
-            </div>
-            <div class="actions">
-              <a class="btn" href="#">Open</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb" title="Replace with assets/project-5.jpg"></div>
-          <div class="meta">
-            <div class="title">Gemini API Developer</div>
-            <div class="tags">
-              <span class="tag">Prototype</span>
-            </div>
-            <div class="actions">
-              <a class="btn" href="#">Open</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb" title="Replace with assets/project-6.jpg"></div>
-          <div class="meta">
-            <div class="title">Automation & Tools</div>
-            <div class="tags">
-              <span class="tag">Utilities</span>
-            </div>
-            <div class="actions">
-              <a class="btn" href="#">Open</a>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Experience + Certificates -->
     <section id="experience">
       <div class="two">
         <div class="panel">
@@ -224,7 +183,7 @@
                 <div class="place">IIT Bombay</div>
                 <div class="where">Research Assistance — Mumbai, India</div>
               </div>
-              <a class="btn" href="#projects"> work</a>
+              <a class="btn" href="#projects">Work</a>
             </div>
             <div class="row">
               <div>
@@ -238,7 +197,6 @@
                 <div class="place">TechShiksha</div>
                 <div class="where">Instructor — Bangalore, India</div>
               </div>
-              <span class="muted"></span>
             </div>
             <div class="row">
               <div>
@@ -264,7 +222,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
       <div class="tabs">
@@ -273,14 +230,14 @@
         <button class="tab" data-tab="language">Language</button>
       </div>
       <div class="tiles" data-pane="expertise">
-        <div class="tile"><div class="ph" title="assets/skill-video.jpg"></div><div class="cap">Video Editing</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-photo.jpg"></div><div class="cap">Photography</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-ai.jpg"></div><div class="cap">Artificial Intelligence</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-ml.jpg"></div><div class="cap">Machine Learning</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-dt.jpg"></div><div class="cap">Digital Twin</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-ar.jpg"></div><div class="cap">Augmented Reality</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-vr.jpg"></div><div class="cap">Virtual Reality</div></div>
-        <div class="tile"><div class="ph" title="assets/skill-prompt.jpg"></div><div class="cap">Prompt Engineering</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Video Editing</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Photography</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Artificial Intelligence</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Machine Learning</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Digital Twin</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Augmented Reality</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Virtual Reality</div></div>
+        <div class="tile"><div class="ph"></div><div class="cap">Prompt Engineering</div></div>
       </div>
       <div class="tiles" data-pane="software" style="display:none">
         <div class="tile"><div class="ph"></div><div class="cap">Unreal Engine</div></div>
@@ -294,7 +251,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <div class="contact">
         <h2>Contact</h2>
@@ -305,14 +261,11 @@
       </div>
     </section>
 
-    <footer>© <span id="y"></span> Jeevanantham Sankaran · Notion-style theme (replace images in /assets)</footer>
+    <footer>© <span id="y"></span> Jeevanantham Sankaran</footer>
   </main>
 
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Skills tabs
     const tabs = document.querySelectorAll('.tab');
     const panes = document.querySelectorAll('[data-pane]');
     tabs.forEach(t => t.addEventListener('click', () => {
