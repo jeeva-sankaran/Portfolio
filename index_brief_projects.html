@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeevanantham Sankaran · XR/VR Portfolio</title>
+  <meta name="description" content="XR/VR developer portfolio featuring IIT Bombay VR truck mission, ASTERS simulation, VR dental training, and Ravana VR showcase.">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#111218;
+      --muted:#9aa4b2;
+      --brand:#00e5ff;
+      --brand2:#7cf5ff;
+      --text:#e6e8ee;
+      --accent:#9b8cff;
+      --card:#141724;
+      --glow: 0 0 30px rgba(0,229,255,.25), 0 0 60px rgba(0,229,255,.12);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:radial-gradient(1200px 500px at 80% -10%, rgba(124,245,255,.12), transparent 55%),
+                 radial-gradient(900px 600px at -10% 90%, rgba(155,140,255,.14), transparent 55%),
+                 var(--bg);
+      line-height:1.55;
+    }
+    /* ===== Floating Left Corner Button (Quick Menu) ===== */
+    #quickMenu{
+      position:fixed; left:18px; top:18px; z-index:1000;
+      display:flex; align-items:center; gap:10px;
+    }
+    #quickToggle{
+      width:54px; height:54px; border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(145deg, var(--brand), var(--accent));
+      color:#001015; font-weight:800;
+      box-shadow:var(--glow);
+      cursor:pointer;
+    }
+    #quickPanel{
+      display:none;
+      background:rgba(17,18,24,.9);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(255,255,255,.08);
+      padding:10px; border-radius:999px;
+    }
+    #quickPanel a{
+      padding:10px 14px; border-radius:999px; text-decoration:none; color:var(--text);
+      border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      margin-right:6px; font-weight:700; font-size:.92rem;
+    }
+    #quickPanel a:hover{border-color:rgba(255,255,255,.25)}
+    /* ===== Top Nav (right) ===== */
+    nav{
+      position:fixed; right:18px; top:18px; z-index:999;
+      display:flex; gap:8px; align-items:center;
+    }
+    nav a{
+      text-decoration:none; color:var(--text); font-weight:700;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(20,23,36,.65);
+      backdrop-filter: blur(8px);
+    }
+    nav a:hover{border-color:rgba(255,255,255,.25)}
+    /* ===== Hero ===== */
+    header.hero{
+      min-height:92vh; display:grid; place-items:center; position:relative; overflow:hidden;
+      padding:110px 22px 80px;
+    }
+    .hero-grid{
+      width:min(1200px, 92vw);
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:30px;
+    }
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius); padding:26px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      background:rgba(0,229,255,.12); color:var(--brand2); font-weight:800; letter-spacing:.2px;
+      border:1px solid rgba(0,229,255,.25);
+    }
+    h1{
+      font-size:clamp(2.1rem, 5vw, 3.4rem); line-height:1.1; margin:16px 0 10px; letter-spacing:.3px;
+    }
+    .subtitle{color:var(--muted); font-size:1.05rem}
+    .cta{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      appearance:none; border:none; cursor:pointer; text-decoration:none; color:#0b0c10;
+      background:linear-gradient(145deg, var(--brand), var(--accent));
+      padding:12px 16px; border-radius:12px; font-weight:800; box-shadow:var(--glow);
+    }
+    .btn.ghost{
+      background:transparent; color:var(--text);
+      border:1px solid rgba(255,255,255,.14); box-shadow:none;
+    }
+    .hero-img{
+      width:100%; aspect-ratio:1/1; border-radius:20px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background: radial-gradient(650px 300px at 70% 0%, rgba(0,229,255,.12), transparent 60%), url('https://images.unsplash.com/photo-1581092333992-96a8c3d7f2a9?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .hero-img img{display:block; width:100%; height:100%; object-fit:cover}
+    .note{font-size:.95rem; color:var(--muted); margin-top:8px}
+    /* ===== Sections ===== */
+    section{padding:70px 22px}
+    .wrap{width:min(1200px, 92vw); margin:0 auto}
+    h2{font-size:clamp(1.6rem,3.2vw,2.2rem); margin:0 0 18px}
+    .lead{color:var(--muted); max-width:860px}
+    /* ===== Experience Timeline ===== */
+    .timeline{
+      display:grid; gap:18px; position:relative; margin-top:24px;
+    }
+    .item{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+      padding:18px 18px 6px;
+    }
+    .item header{display:flex; justify-content:space-between; align-items:center; gap:12px}
+    .tag{padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); color:var(--brand2); font-weight:800}
+    .role{font-weight:800}
+    details{margin:10px 0 6px}
+    summary{cursor:pointer; font-weight:700}
+    ul{margin:8px 0 16px 18px}
+    /* ===== Projects Grid + Filters ===== */
+    .filters{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+    .chip{border:1px solid rgba(255,255,255,.14); padding:8px 12px; border-radius:999px; cursor:pointer; user-select:none}
+    .chip.active{border-color:var(--brand); box-shadow:var(--glow)}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .card{
+      grid-column:span 6;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{transform:translateY(-4px); box-shadow:0 10px 40px rgba(0,0,0,.35)}
+    @media (max-width:900px){ .card{grid-column:span 12} }
+    .media{position:relative; aspect-ratio:16/9; overflow:hidden}
+    .media iframe, .media img{position:absolute; inset:0; width:100%; height:100%; border:0}
+    .meta{padding:14px 14px 16px}
+    .kvs{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .kv{font-size:.85rem; color:var(--muted)}
+    .actions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+    /* ===== Contact ===== */
+    .contact{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center;
+    }
+    @media (max-width:900px){ .contact{grid-template-columns:1fr} }
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px;
+    }
+    .field{display:grid; gap:6px; margin:10px 0}
+    input, textarea{
+      background:#0c0f1a; color:var(--text); border:1px solid rgba(255,255,255,.12);
+      padding:12px 12px; border-radius:12px; font: inherit; resize:vertical;
+    }
+    footer{padding:26px; color:var(--muted); text-align:center}
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(14px); transition: all .6s ease}
+    .reveal.show{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+  <!-- Left-corner quick button + panel -->
+  <div id="quickMenu" aria-label="Quick menu">
+    <button id="quickToggle" title="Menu">≡</button>
+    <div id="quickPanel" role="menu" aria-hidden="true">
+      <a href="#about" role="menuitem">About</a>
+      <a href="#experience" role="menuitem">Experience</a>
+      <a href="#projects" role="menuitem">Projects</a>
+      <a href="#contact" role="menuitem">Contact</a>
+    </div>
+  </div>
+
+  <!-- Right-corner nav -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact" class="btn">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <header id="about" class="hero">
+    <div class="hero-grid reveal">
+      <div class="hero-card">
+        <span class="badge">XR/VR · Unreal Engine · Simulation</span>
+        <h1>Jeevanantham Sankaran</h1>
+        <p class="subtitle">I build immersive simulations and interactive training systems in Unreal Engine—blending real‑time 3D, Blueprint logic, and data pipelines to solve hard, real‑world problems.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Contact</a>
+        </div>
+        <p class="note">Tip: Replace the hero image with your photo by editing the <code>.hero-img</code> background URL.</p>
+      </div>
+      <div class="hero-img" aria-label="VR themed image / your photo goes here"></div>
+    </div>
+  </header>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <h2>Professional Experience</h2>
+      <p class="lead">Key roles and impact summarized. Expand each item for bullet‑level responsibilities.</p>
+
+      <div class="timeline">
+        <article class="item reveal">
+          <header>
+            <div>
+              <div class="role">Research Assistant · Indian Institute of Technology (IIT) Bombay</div>
+              <div class="kv">Feb 2025 – Present · Mumbai, India</div>
+            </div>
+            <span class="tag">VR · UE5.3</span>
+          </header>
+          <details>
+            <summary>Highlights (click to expand)</summary>
+            <ul>
+              <li>Developed VR systems in Unreal Engine 5.3 using Blueprint scripting for hand tracking, scaling, and collision mechanics.</li>
+              <li>Designed interactive rural environments with optimized landscapes, spline‑based vehicle animation, and multi‑camera setups.</li>
+              <li>Created and refined 3D assets with proper UV mapping, LOD optimization, and performance‑focused material workflows.</li>
+              <li>Integrated spatial audio for vehicle motion, animal sounds, and synchronized environmental cues.</li>
+              <li>Engineered immersive interaction mechanics (VR teleportation, gesture‑based 3D painting, stair‑walking simulation, real‑time mesh snapping).</li>
+              <li>Managed version migration, performance testing, asset pipelines, and optimization for VR deployment.</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="item reveal">
+          <header>
+            <div>
+              <div class="role">Research Intern · University of Tennessee (UTK)</div>
+              <div class="kv">Feb 2024 – Jun 2024 · Knoxville, USA</div>
+            </div>
+            <span class="tag">Simulation · Python · OpenCV</span>
+          </header>
+          <details>
+            <summary>Highlights (click to expand)</summary>
+            <ul>
+              <li>Developed immersive 3D environments and level designs in Unreal Engine with realistic architecture and lighting.</li>
+              <li>Built Blueprint logic for evacuee and threat movement; implemented real‑time camera systems for analytics.</li>
+              <li>Used OpenCV with Python for shooter detection and visual data processing; automated frame analysis and tracking.</li>
+              <li>Integrated egress algorithms to compute optimal evacuation routes and control LED guidance systems.</li>
+              <li>Established end‑to‑end data pipeline (simulation → CSV → pathfinding → actor behavior response).</li>
+              <li>Optimized for real‑time performance and scalability for emergency planning research.</li>
+            </ul>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <p class="lead">Filter by type, then explore cards. Each card links to a live video or asset.</p>
+
+      <div class="filters">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="vr">Virtual Reality</button>
+        <button class="chip" data-filter="simulation">Simulation</button>
+        <button class="chip" data-filter="showcase">Showcase</button>
+      </div>
+
+      <div class="grid">
+        <!-- Maharashtra Drone Mission -->
+        <article class="card reveal" data-tags="vr simulation">
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/7zgsyIyo7qQ" title="Maharashtra Drone Mission"></iframe>
+          </div>
+          <div class="meta">
+            <h3>Maharashtra Drone Mission (VR Truck Command Center)</h3>
+            <div class="kvs">
+              <span class="kv"><strong>Client:</strong> Govt. of Maharashtra</span>
+              <span class="kv"><strong>Type:</strong> Virtual Reality</span>
+              <span class="kv"><strong>Stack:</strong> Unreal Engine, Blueprint</span>
+            </div>
+            <p class="kv">VR simulation of a mobile command truck for monitoring and coordination.</p>
+            <div class="actions">
+              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/7zgsyIyo7qQ">Watch Video</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASTERS -->
+        <article class="card reveal" data-tags="simulation">
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/vZf56XWqUsY" title="ASTERS"></iframe>
+          </div>
+          <div class="meta">
+            <h3>ASTERS: Active Shooter Tracking & Evacuation Routing</h3>
+            <div class="kvs">
+              <span class="kv"><strong>Client:</strong> NSF (USA)</span>
+              <span class="kv"><strong>Type:</strong> Simulation</span>
+              <span class="kv"><strong>Stack:</strong> Unreal Engine, Python, OpenCV</span>
+            </div>
+            <p class="kv">Indoor simulation with real‑time detection, pathfinding, and LED guidance to study evacuation strategies.</p>
+            <div class="actions">
+              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Watch Video</a>
+              <a class="btn ghost" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XUJs0Y8INELjnUNagX6r9uAhdaMSqK4y/view?usp=drive_link">Read Report</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- VR Dental Training -->
+        <article class="card reveal" data-tags="vr">
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/q3jmrM6cjmI" title="VR Dental Training"></iframe>
+          </div>
+          <div class="meta">
+            <h3>VR Dental Training Simulation</h3>
+            <div class="kvs">
+              <span class="kv"><strong>Client:</strong> Incise Dental</span>
+              <span class="kv"><strong>Type:</strong> Virtual Reality</span>
+              <span class="kv"><strong>Stack:</strong> Unreal Engine</span>
+            </div>
+            <p class="kv">VR from real patient scans for repeatable dental training.</p>
+            <div class="actions">
+              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/q3jmrM6cjmI">Watch Video</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ravana VR Showcase -->
+        <article class="card reveal" data-tags="showcase vr">
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/1x3rMaC1Cc4" title="Ravana VR"></iframe>
+          </div>
+          <div class="meta">
+            <h3>Ravana VR (Showcase Project)</h3>
+            <div class="kvs">
+              <span class="kv"><strong>Type:</strong> Virtual Reality · Showcase</span>
+              <span class="kv"><strong>Stack:</strong> Unreal Engine, Blender</span>
+            </div>
+            <p class="kv">Cinematic VR retelling mythological stories with lighting and animation.</p>
+            <div class="actions">
+              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/1x3rMaC1Cc4">Watch Video</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Demo Reel / Additional Works -->
+        <article class="card reveal" data-tags="showcase">
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/thfuobmoxaI" title="Demo Reel"></iframe>
+          </div>
+          <div class="meta">
+            <h3>Demo Reel & Additional Works</h3>
+            <p class="kv">Highlights from multiple projects.</p>
+            <div class="actions">
+              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/thfuobmoxaI">Demo Reel</a>
+              <a class="btn ghost" target="_blank" rel="noopener" href="https://youtu.be/9AaFZJVDb1U">Extra Video</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div class="panel reveal">
+          <p class="lead">Let’s collaborate. I’m open to roles and projects in XR/VR, simulation, and real‑time visualization.</p>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="msg">Message</label>
+            <textarea id="msg" rows="5" placeholder="Write your message…"></textarea>
+          </div>
+          <button class="btn" id="sendBtn" type="button">Create Email Draft</button>
+          <p class="note">This creates a mailto draft locally—no backend needed.</p>
+        </div>
+        <div class="panel reveal">
+          <h3>Direct</h3>
+          <p><strong>Email:</strong> <a href="mailto:jeevaofficial1407@gmail.com">jeevaofficial1407@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+918838813020">+91 8838813020</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeevananthamsankaran/" target="_blank" rel="noopener">/in/jeevananthamsankaran</a></p>
+          <p><strong>ArtStation:</strong> <a href="https://jeevanathams07.artstation.com/" target="_blank" rel="noopener">jeevanathams07</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Jeevanantham Sankaran · Built with HTML/CSS/JS · Deployed on GitHub Pages</footer>
+
+  <script>
+    // Left-corner menu toggle
+    const toggle = document.getElementById('quickToggle');
+    const panel = document.getElementById('quickPanel');
+    toggle.addEventListener('click', ()=>{
+      const open = panel.style.display === 'block';
+      panel.style.display = open ? 'none' : 'block';
+      panel.setAttribute('aria-hidden', open ? 'true' : 'false');
+    });
+    // Filters
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.card');
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c=>c.classList.remove('active'));
+      ch.classList.add('active');
+      const f = ch.dataset.filter;
+      cards.forEach(card => {
+        if (f==='all') { card.style.display='block'; return; }
+        const tags = card.dataset.tags.split(' ');
+        card.style.display = tags.includes(f) ? 'block' : 'none';
+      });
+    }));
+    // Reveal on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Contact: create a mailto draft
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const name = (document.getElementById('name').value||'').trim();
+      const email = (document.getElementById('email').value||'').trim();
+      const msg = (document.getElementById('msg').value||'').trim();
+      const subject = encodeURIComponent('Portfolio enquiry from ' + (name||'your website'));
+      const body = encodeURIComponent(`Hello Jeevanantham,\n\n${msg}\n\nFrom: ${name}${email ? ' · ' + email : ''}`);
+      window.location.href = `mailto:jeevaofficial1407@gmail.com?subject=${subject}&body=${body}`;
+    });
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
