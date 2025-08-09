@@ -33,20 +33,20 @@
     .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
     nav a{color:var(--text); padding:8px 10px; border-radius:8px}
     nav a:hover{background:#eef2f7; text-decoration:none}
-    .cover{height:min(36vh, 360px); background:#ddd url('assets/cover.jpg') center/cover no-repeat}
+    .cover{height:min(36vh, 360px); background:#ddd url('./cover.jpg') center/cover no-repeat}
     .titlerow{display:grid; grid-template-columns: 1fr 220px; gap:24px; margin-top: -36px; padding:18px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
     h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 6px}
     .intro{color:#374151}
     .portrait{
       width:100%; aspect-ratio: 3/4; border-radius:14px; overflow:hidden; border:1px solid var(--border);
-      background:#e5e7eb url('assets/portrait.jpg') center/cover no-repeat;
+      background:#e5e7eb center/cover no-repeat;
     }
     @media (max-width:900px){ .titlerow{ grid-template-columns:1fr } }
     section{padding:28px 0}
     h2{font-size:1.4rem; margin:0 0 12px}
     .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
     .card{grid-column:span 4; background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
-    .thumb{aspect-ratio:16/9; background:#e5e7eb url('assets/project-thumb.jpg') center/cover no-repeat}
+    .thumb{aspect-ratio:16/9; background:#e5e7eb center/cover no-repeat}
     .meta{padding:12px 14px}
     .title{font-weight:700}
     .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
@@ -68,7 +68,7 @@
     .tab.active{background:#eef2f7}
     .tiles{display:grid; grid-template-columns:repeat(12,1fr); gap:12px}
     .tile{grid-column:span 3; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff}
-    .tile .ph{aspect-ratio:16/9; background:#e5e7eb url('assets/skill.jpg') center/cover no-repeat}
+    .tile .ph{aspect-ratio:16/9; background:#e5e7eb center/cover no-repeat}
     .tile .cap{padding:10px 12px; font-weight:600}
     @media (max-width:1000px){ .tile{grid-column:span 4} }
     @media (max-width:680px){ .tile{grid-column:span 6} }
@@ -90,7 +90,7 @@
     </div>
   </header>
 
-  <div class="cover" title="Replace with assets/cover.jpg"></div>
+  <div class="cover" title="Cover image"></div>
 
   <main class="wrap">
     <section>
@@ -104,7 +104,7 @@
             real-time 3D, and human-centered design—focused on simulation, interaction, and digital twins.
           </p>
         </div>
-        <div class="portrait" style="background-image:url('assets/Profile.jpg')" title="Profile photo"></div>
+        <div class="portrait" style="background-image:url('./Profile.jpg')" title="Profile photo"></div>
       </div>
     </section>
 
@@ -112,7 +112,7 @@
       <h2>Projects</h2>
       <div class="cards">
         <article class="card">
-          <div class="thumb" style="background-image:url('assets/A.png')"></div>
+          <div class="thumb" style="background-image:url('./A.png')"></div>
           <div class="meta">
             <div class="title">Design & Analysis of Emergency Evacuation Simulations</div>
             <div class="tags">
@@ -121,14 +121,14 @@
               <span class="tag">Virtual Reality</span>
             </div>
             <div class="actions">
-              <a class="btn" href="asters.html">Open</a>
+              <a class="btn" href="projects/asters.html">Open</a>
               <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb" style="background-image:url('assets/M.png')"></div>
+          <div class="thumb" style="background-image:url('./M.png')"></div>
           <div class="meta">
             <div class="title">Maharashtra Truck Simulation</div>
             <div class="tags">
@@ -136,13 +136,13 @@
               <span class="tag">VR</span>
             </div>
             <div class="actions">
-              <a class="btn" href="maharashtra-truck.html">Open</a>
+              <a class="btn" href="projects/maharashtra-truck.html">Open</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb" style="background-image:url('assets/Dental_Front.png')"></div>
+          <div class="thumb" style="background-image:url('./Dental_Front.png')"></div>
           <div class="meta">
             <div class="title">Dental VR Project</div>
             <div class="tags">
@@ -150,14 +150,14 @@
               <span class="tag">Virtual Reality</span>
             </div>
             <div class="actions">
-              <a class="btn" href="dental-vr.html">Open</a>
+              <a class="btn" href="projects/dental-vr.html">Open</a>
               <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/q3jmrM6cjmI">Video</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb" style="background-image:url('assets/Ravana_Front.png')"></div>
+          <div class="thumb" style="background-image:url('./Ravana_Front.png')"></div>
           <div class="meta">
             <div class="title">VR Project (Ravana VR)</div>
             <div class="tags">
@@ -165,7 +165,7 @@
               <span class="tag">Video Production</span>
             </div>
             <div class="actions">
-              <a class="btn" href="ravana-vr.html">Open</a>
+              <a class="btn" href="projects/ravana-vr.html">Open</a>
               <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/1x3rMaC1Cc4">Video</a>
             </div>
           </div>
