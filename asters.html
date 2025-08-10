@@ -28,7 +28,7 @@
     .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
     .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827; text-decoration:none}
     .btn:hover{background:#eef2f7}
-    .hero{height:min(36vh,360px); background:#ddd center/cover no-repeat; background-image:url('A.png')}
+    .hero{height:min(36vh,360px); background:#ddd center/cover no-repeat; background-image:url('../A.png')}
     main section{padding:28px 0}
     .panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow)}
     h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 8px}
@@ -48,8 +48,8 @@
 <body>
   <header class="top">
     <div class="wrap top-inner">
-      <!-- If this file sits in /projects, use href="../index.html" -->
-      <div class="crumbs"><a href="index.html">← Back</a></div>
+      <!-- This page is in /projects/, so go up one level -->
+      <div class="crumbs"><a href="../index.html">← Back</a></div>
       <div class="btns">
         <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
         <a class="btn" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XUJs0Y8INELjnUNagX6r9uAhdaMSqK4y/view?usp=drive_link">Report</a>
@@ -112,22 +112,24 @@
       </div>
     </section>
 
-    <!-- Workflow (A-1.png ... A-6.png) -->
+    <!-- Workflow (uses your filenames) -->
     <section>
-      <div class="wf-grid">
-  <div class="wf-card"><img src="A-1.jpg" alt="Workflow step 1" loading="lazy"></div>
-  <div class="wf-arrow">→</div>
-  <div class="wf-card"><img src="A-2.png" alt="Workflow step 2" loading="lazy"></div>
-  <div class="wf-arrow">→</div>
-  <div class="wf-card"><img src="A-3.jpg" alt="Workflow step 3" loading="lazy"></div>
-  <div class="wf-arrow">→</div>
-  <div class="wf-card"><img src="A-4.png" alt="Workflow step 4" loading="lazy"></div>
-  <div class="wf-arrow">→</div>
-  <div class="wf-card"><img src="A-5.png" alt="Workflow step 5" loading="lazy"></div>
-  <div class="wf-arrow">→</div>
-  <div class="wf-card"><img src="A-6.png" alt="Workflow step 6" loading="lazy"></div>
-</div>
-
+      <div class="panel">
+        <h2>Workflow</h2>
+        <div class="wf-grid">
+          <div class="wf-card"><img src="../A-1.jpg" alt="Workflow step 1" loading="lazy"></div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-card"><img src="../A-2.png" alt="Workflow step 2" loading="lazy"></div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-card"><img src="../A-3.jpg" alt="Workflow step 3" loading="lazy"></div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-card"><img src="../A-4.png" alt="Workflow step 4" loading="lazy"></div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-card"><img src="../A-5.png" alt="Workflow step 5" loading="lazy"></div>
+          <div class="wf-arrow">→</div>
+          <div class="wf-card"><img src="../A-6.png" alt="Workflow step 6" loading="lazy"></div>
+        </div>
+      </div>
     </section>
   </main>
 
