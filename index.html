@@ -16,7 +16,8 @@
       --chip:#f1f5f9;
       --brand:#2563eb;
       --radius:12px;
-      --shadow: 0 2px 8px rgba(0,0,0,.06);
+      --shadow:0 6px 24px rgba(2,6,23,.06);
+      --shadow-hover:0 10px 28px rgba(2,6,23,.10);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -29,40 +30,78 @@
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{width:min(1100px, 92vw); margin:0 auto}
-    header.top{position:sticky; top:0; z-index:10; background:rgba(247,248,250,.75); backdrop-filter: blur(8px); border-bottom:1px solid var(--border)}
+
+    /* Top bar */
+    header.top{
+      position:sticky; top:0; z-index:10;
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border)
+    }
     .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
     nav a{color:var(--text); padding:8px 10px; border-radius:8px}
     nav a:hover{background:#eef2f7; text-decoration:none}
-    .cover{height:min(36vh, 360px); background:#ddd url('./cover.jpg') center/cover no-repeat}
-    .titlerow{display:grid; grid-template-columns: 1fr 220px; gap:24px; margin-top: -36px; padding:18px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    /* Cover */
+    .cover{
+      height:clamp(220px,36vh,420px);
+      background-position:center;
+      background-size:cover;
+      border-bottom:1px solid var(--border);
+      transition:opacity .6s ease;
+    }
+    .cover.fade{opacity:0}
+
+    /* Title row */
+    .titlerow{
+      display:grid; grid-template-columns: 1fr 220px; gap:24px;
+      margin-top:-36px; padding:18px; background:var(--surface);
+      border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow)
+    }
     h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 6px}
     .intro{color:#374151}
     .portrait{
-      width:100%; aspect-ratio: 3/4; border-radius:14px; overflow:hidden; border:1px solid var(--border);
-      background:#e5e7eb center/cover no-repeat;
+      width:100%; aspect-ratio:3/4; border-radius:14px; overflow:hidden;
+      border:1px solid var(--border); background:#e5e7eb center/cover no-repeat;
     }
     @media (max-width:900px){ .titlerow{ grid-template-columns:1fr } }
+
     section{padding:28px 0}
     h2{font-size:1.4rem; margin:0 0 12px}
+
+    /* Cards */
     .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
-    .card{grid-column:span 4; background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
+    .card{
+      grid-column:span 4; background:var(--surface);
+      border:1px solid var(--border); border-radius:16px; overflow:hidden;
+      box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease
+    }
+    .card:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
     .thumb{aspect-ratio:16/9; background:#e5e7eb center/cover no-repeat}
     .meta{padding:12px 14px}
     .title{font-weight:700}
     .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
     .tag{background:var(--chip); color:#374151; padding:6px 10px; border-radius:999px; font-size:.85rem}
     .actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
-    .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827; text-decoration:none}
+    .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827}
     .btn:hover{background:#eef2f7}
     @media (max-width:1000px){ .card{grid-column:span 6} }
     @media (max-width:680px){ .card{grid-column:span 12} }
+
+    /* Two columns */
     .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
     @media (max-width:900px){ .two{grid-template-columns:1fr} }
     .panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow)}
     .list{display:grid; gap:10px}
-    .row{display:flex; justify-content:space-between; gap:10px; align-items:center; border:1px solid var(--border); background:#fff; border-radius:12px; padding:10px 12px}
+    .row{
+      display:flex; justify-content:space-between; gap:10px; align-items:center;
+      border:1px solid var(--border); background:#fff; border-radius:12px; padding:10px 12px
+    }
     .row .place{font-weight:700}
     .row .where{color:#6b7280}
+    .row .when{color:#6b7280; font-size:.9rem}
+
+    /* Skills */
     .tabs{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap}
     .tab{padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:#fff; cursor:pointer}
     .tab.active{background:#eef2f7}
@@ -72,6 +111,8 @@
     .tile .cap{padding:10px 12px; font-weight:600}
     @media (max-width:1000px){ .tile{grid-column:span 4} }
     @media (max-width:680px){ .tile{grid-column:span 6} }
+
+    /* Contact */
     .contact{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
     .contact a{word-break:break-all}
     footer{padding:28px 0; color:#6b7280}
@@ -90,16 +131,11 @@
     </div>
   </header>
 
-<div class="cover" id="cover" style="background-image:url('BG_1.JPG'); height:400px; background-size:cover; background-position:center;"></div>
-
-<script>
-  setTimeout(() => {
-    document.getElementById("cover").style.backgroundImage = "url('BG_2.JPG')";
-  }, 2000); // 2000 milliseconds = 2 seconds
-</script>
-
+  <!-- Cover with 2s crossfade BG_1.JPG -> BG_2.JPG -->
+  <div class="cover" id="cover" style="background-image:url('./BG_1.JPG')"></div>
 
   <main class="wrap">
+    <!-- Title -->
     <section>
       <div class="titlerow">
         <div>
@@ -111,10 +147,11 @@
             real-time 3D, and human-centered design—focused on simulation, interaction, and digital twins.
           </p>
         </div>
-        <div class="portrait" style="background-image:url('Profile.jpg')" title="Profile photo"></div>
+        <div class="portrait" style="background-image:url('./Profile.jpg')" title="Profile photo"></div>
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
       <div class="cards">
@@ -144,6 +181,7 @@
             </div>
             <div class="actions">
               <a class="btn" href="maharashtra-truck.html">Open</a>
+              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/7zgsyIyo7qQ">Video</a>
             </div>
           </div>
         </article>
@@ -180,6 +218,7 @@
       </div>
     </section>
 
+    <!-- Experience -->
     <section id="experience">
       <div class="two">
         <div class="panel">
@@ -189,124 +228,92 @@
               <div>
                 <div class="place">IIT Bombay</div>
                 <div class="where">Research Assistance — Mumbai, India</div>
+                <div class="when">Duration: <!-- fill --> e.g., Jan 2023 – Jun 2023</div>
               </div>
-              <a class="btn" href="#projects">Work</a>
             </div>
             <div class="row">
               <div>
                 <div class="place">University of Tennessee</div>
                 <div class="where">Research Intern — Knoxville, USA</div>
+                <div class="when">Duration: <!-- fill --> e.g., Jul 2023 – Dec 2023</div>
               </div>
-              <a class="btn" href="#projects">View work</a>
             </div>
             <div class="row">
               <div>
                 <div class="place">TechShiksha</div>
                 <div class="where">Instructor — Bangalore, India</div>
+                <div class="when">Duration: <!-- fill --> e.g., 2022 (6 months)</div>
               </div>
             </div>
             <div class="row">
               <div>
                 <div class="place">Madras Minds</div>
                 <div class="where">Developer Intern — Chennai, India</div>
+                <div class="when">Duration: <!-- fill --> e.g., 2021 (Internship)</div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Certificates -->
         <div class="panel">
           <h2>Certificates</h2>
           <div class="list">
-            <div class="row"><div>Power BI Virtual Case Experience</div></div>
-            <div class="row"><div>Data Analysis with Python</div></div>
-            <div class="row"><div>The Fundamentals of Digital Marketing</div></div>
-            <div class="row"><div>Data Analysis Using Python</div></div>
-            <div class="row"><div>Data Visualisation: Empowering Business</div></div>
-            <div class="row"><div>SQL for Data Analysis</div></div>
-            <div class="row"><div>Industrial Training on IoT with Smart Devices</div></div>
+            <a class="row" href="https://drive.google.com/file/d/12tJH4Idj9radkERzvRMg5j_Xq226ex0z/view" target="_blank" rel="noopener">
+              <div>Power BI Virtual Case Experience</div>
+            </a>
+            <a class="row" href="https://drive.google.com/file/d/1zB0-2ZcGTslHxe_fjkGrRAcDYCDGDj6z/view" target="_blank" rel="noopener">
+              <div>Data Analysis with Python</div>
+            </a>
+            <a class="row" href="https://drive.google.com/file/d/1UdzqObOXkEI7mgZtNXkWI7IjZar-VFgl/view" target="_blank" rel="noopener">
+              <div>The Fundamentals of Digital Marketing</div>
+            </a>
+            <a class="row" href="https://drive.google.com/file/d/1WMFuPunrC_320Qk9R2JArqRWqQOrB60o/view" target="_blank" rel="noopener">
+              <div>Data Visualisation: Empowering Business with Effective Insights</div>
+            </a>
+            <a class="row" href="https://drive.google.com/file/d/1EwrwHwmSnfBKFVH8LWdSbkytgYdUxcCe/view" target="_blank" rel="noopener">
+              <div>SQL for Data Analysis</div>
+            </a>
+            <!-- Removed: duplicate "Data Analysis Using Python" and "Industrial Training on IoT with Smart Devices" -->
           </div>
         </div>
       </div>
     </section>
 
-   <section id="skills">
-  <h2>Skills</h2>
-  <div class="tabs">
-    <button class="tab active" data-tab="expertise">Expertise</button>
-    <button class="tab" data-tab="software">Software</button>
-    <button class="tab" data-tab="language">Language</button>
-  </div>
+    <!-- Skills (unchanged, uses your webp thumbs) -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="expertise">Expertise</button>
+        <button class="tab" data-tab="software">Software</button>
+        <button class="tab" data-tab="language">Language</button>
+      </div>
 
-  <!-- Expertise -->
-  <div class="tiles" data-pane="expertise">
-    <div class="tile">
-      <div class="ph" style="background:url('./VE.webp') center/cover no-repeat"></div>
-      <div class="cap">Video Editing</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./PG.webp') center/cover no-repeat"></div>
-      <div class="cap">Photography</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./AI.webp') center/cover no-repeat"></div>
-      <div class="cap">Artificial Intelligence</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./ML.webp') center/cover no-repeat"></div>
-      <div class="cap">Machine Learning</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./DT.webp') center/cover no-repeat"></div>
-      <div class="cap">Digital Twin</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./AR.webp') center/cover no-repeat"></div>
-      <div class="cap">Augmented Reality</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./VR.webp') center/cover no-repeat"></div>
-      <div class="cap">Virtual Reality</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./PE.webp') center/cover no-repeat"></div>
-      <div class="cap">Prompt Engineering</div>
-    </div>
-  </div>
+      <div class="tiles" data-pane="expertise">
+        <div class="tile"><div class="ph" style="background:url('./VE.webp') center/cover no-repeat"></div><div class="cap">Video Editing</div></div>
+        <div class="tile"><div class="ph" style="background:url('./PG.webp') center/cover no-repeat"></div><div class="cap">Photography</div></div>
+        <div class="tile"><div class="ph" style="background:url('./AI.webp') center/cover no-repeat"></div><div class="cap">Artificial Intelligence</div></div>
+        <div class="tile"><div class="ph" style="background:url('./ML.webp') center/cover no-repeat"></div><div class="cap">Machine Learning</div></div>
+        <div class="tile"><div class="ph" style="background:url('./DT.webp') center/cover no-repeat"></div><div class="cap">Digital Twin</div></div>
+        <div class="tile"><div class="ph" style="background:url('./AR.webp') center/cover no-repeat"></div><div class="cap">Augmented Reality</div></div>
+        <div class="tile"><div class="ph" style="background:url('./VR.webp') center/cover no-repeat"></div><div class="cap">Virtual Reality</div></div>
+        <div class="tile"><div class="ph" style="background:url('./PE.webp') center/cover no-repeat"></div><div class="cap">Prompt Engineering</div></div>
+      </div>
 
-  <!-- Software -->
-  <div class="tiles" data-pane="software" style="display:none">
-    <div class="tile">
-      <div class="ph" style="background:url('./UE.webp') center/cover no-repeat"></div>
-      <div class="cap">Unreal Engine</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./B.webp') center/cover no-repeat"></div>
-      <div class="cap">Blender</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./Python.webp') center/cover no-repeat"></div>
-      <div class="cap">Python</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./AC.webp') center/cover no-repeat"></div>
-      <div class="cap">AutoCAD</div>
-    </div>
-  </div>
+      <div class="tiles" data-pane="software" style="display:none">
+        <div class="tile"><div class="ph" style="background:url('./UE.webp') center/cover no-repeat"></div><div class="cap">Unreal Engine</div></div>
+        <div class="tile"><div class="ph" style="background:url('./B.webp') center/cover no-repeat"></div><div class="cap">Blender</div></div>
+        <div class="tile"><div class="ph" style="background:url('./Python.webp') center/cover no-repeat"></div><div class="cap">Python</div></div>
+        <div class="tile"><div class="ph" style="background:url('./AC.webp') center/cover no-repeat"></div><div class="cap">AutoCAD</div></div>
+      </div>
 
-  <!-- Languages -->
-  <div class="tiles" data-pane="language" style="display:none">
-    <div class="tile">
-      <div class="ph" style="background:url('./E.webp') center/cover no-repeat"></div>
-      <div class="cap">English</div>
-    </div>
-    <div class="tile">
-      <div class="ph" style="background:url('./T.webp') center/cover no-repeat"></div>
-      <div class="cap">Tamil</div>
-    </div>
-  </div>
-</section>
+      <div class="tiles" data-pane="language" style="display:none">
+        <div class="tile"><div class="ph" style="background:url('./E.webp') center/cover no-repeat"></div><div class="cap">English</div></div>
+        <div class="tile"><div class="ph" style="background:url('./T.webp') center/cover no-repeat"></div><div class="cap">Tamil</div></div>
+      </div>
+    </section>
 
-
+    <!-- Contact -->
     <section id="contact">
       <div class="contact">
         <h2>Contact</h2>
@@ -321,7 +328,10 @@
   </main>
 
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Skills tabs
     const tabs = document.querySelectorAll('.tab');
     const panes = document.querySelectorAll('[data-pane]');
     tabs.forEach(t => t.addEventListener('click', () => {
@@ -330,6 +340,16 @@
       const id = t.dataset.tab;
       panes.forEach(p => p.style.display = (p.dataset.pane === id) ? 'grid' : 'none');
     }));
+
+    // Cover: gentle crossfade to BG_2.JPG after 2s
+    const cover = document.getElementById('cover');
+    setTimeout(() => {
+      cover.classList.add('fade');
+      setTimeout(() => {
+        cover.style.backgroundImage = "url('./BG_2.JPG')";
+        cover.classList.remove('fade');
+      }, 600); // match CSS transition
+    }, 2000);
   </script>
 </body>
 </html>
