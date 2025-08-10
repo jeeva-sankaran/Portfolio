@@ -42,15 +42,12 @@
     nav a{color:var(--text); padding:8px 10px; border-radius:8px}
     nav a:hover{background:#eef2f7; text-decoration:none}
 
-    /* Cover */
+    /* Cover — fixed image, no fading */
     .cover{
       height:clamp(220px,36vh,420px);
-      background-position:center;
-      background-size:cover;
+      background:url('./BG_1.JPG') center/cover no-repeat;
       border-bottom:1px solid var(--border);
-      transition:opacity .6s ease;
     }
-    .cover.fade{opacity:0}
 
     /* Title row */
     .titlerow{
@@ -62,7 +59,7 @@
     .intro{color:#374151}
     .portrait{
       width:100%; aspect-ratio:3/4; border-radius:14px; overflow:hidden;
-      border:1px solid var(--border); background:#e5e7eb center/cover no-repeat;
+      border:1px solid var(--border); background:url('./Profile.jpg') center/cover no-repeat;
     }
     @media (max-width:900px){ .titlerow{ grid-template-columns:1fr } }
 
@@ -112,9 +109,15 @@
     @media (max-width:1000px){ .tile{grid-column:span 4} }
     @media (max-width:680px){ .tile{grid-column:span 6} }
 
-    /* Contact */
+    /* Contact — simple chips */
     .contact{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
-    .contact a{word-break:break-all}
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border:1px solid var(--border); border-radius:999px;
+      background:#fff; color:#111827; text-decoration:none
+    }
+    .chip:hover{background:#f3f4f6}
     footer{padding:28px 0; color:#6b7280}
   </style>
 </head>
@@ -131,8 +134,8 @@
     </div>
   </header>
 
-  <!-- Cover with 2s crossfade BG_1.JPG -> BG_2.JPG -->
-  <div class="cover" id="cover" style="background-image:url('./BG_1.JPG')"></div>
+  <!-- Fixed cover (no fade) -->
+  <div class="cover" title="Hero background"></div>
 
   <main class="wrap">
     <!-- Title -->
@@ -141,13 +144,13 @@
         <div>
           <h1>Professional Portfolio</h1>
           <p class="intro">
-            As a creative technologist and Unreal Engine specialist, I design immersive VR simulations that bridge real-world challenges
-            with virtual innovation. My work spans disaster response planning at IIT Bombay, emergency evacuation modeling at the
-            University of Tennessee, and VR-based training in healthcare and cultural storytelling. I’m passionate about AR/VR,
-            real-time 3D, and human-centered design—focused on simulation, interaction, and digital twins.
+            As a creative technologist and Unreal Engine specialist, I design immersive VR simulations that bridge real-world
+            challenges with virtual innovation. My work spans disaster response planning at IIT Bombay, emergency evacuation
+            modeling at the University of Tennessee, and VR-based training in healthcare and cultural storytelling. I’m passionate
+            about AR/VR, real-time 3D, and human-centered design—focused on simulation, interaction, and digital twins.
           </p>
         </div>
-        <div class="portrait" style="background-image:url('./Profile.jpg')" title="Profile photo"></div>
+        <div class="portrait" title="Profile photo"></div>
       </div>
     </section>
 
@@ -228,28 +231,28 @@
               <div>
                 <div class="place">IIT Bombay</div>
                 <div class="where">Research Assistance — Mumbai, India</div>
-                <div class="when">Duration: <!-- fill --> e.g., Feb 2025 – Present</div>
+                <div class="when">Duration: Feb 2025 – Present</div>
               </div>
             </div>
             <div class="row">
               <div>
                 <div class="place">TechShiksha</div>
                 <div class="where">Instructor — Bangalore, India</div>
-                <div class="when">Duration: <!-- fill --> e.g., Aug 2024 - Jan 2025</div>
+                <div class="when">Duration: Aug 2024 – Jan 2025</div>
               </div>
             </div>
             <div class="row">
               <div>
                 <div class="place">University of Tennessee</div>
                 <div class="where">Research Intern — Knoxville, USA</div>
-                <div class="when">Duration: <!-- fill --> e.g., Jul 2024 – Dec 2024</div>
+                <div class="when">Duration: Jul 2024 – Dec 2024</div>
               </div>
             </div>
             <div class="row">
               <div>
                 <div class="place">Madras Minds</div>
                 <div class="where">Developer Intern — Chennai, India</div>
-                <div class="when">Duration: <!-- fill --></div>
+                <div class="when">Duration: Jan 2024 – Jun 2024</div>
               </div>
             </div>
           </div>
@@ -280,7 +283,7 @@
       </div>
     </section>
 
-    <!-- Skills (unchanged, uses your webp thumbs) -->
+    <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
       <div class="tabs">
@@ -313,14 +316,16 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact (simple chips) -->
     <section id="contact">
       <div class="contact">
         <h2>Contact</h2>
-        <p><strong>Email:</strong> <a href="mailto:jeevaofficial1407@gmail.com">jeevaofficial1407@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+918838813020">+91 8838813020</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeevananthamsankaran/" target="_blank" rel="noopener">/in/jeevananthamsankaran</a></p>
-        <p><strong>ArtStation:</strong> <a href="https://jeevanathams07.artstation.com/" target="_blank" rel="noopener">jeevanathams07</a></p>
+        <div class="chips">
+          <a class="chip" href="mailto:jeevaofficial1407@gmail.com">Email: jeevaofficial1407@gmail.com</a>
+          <a class="chip" href="tel:+918838813020">Phone: +91 8838813020</a>
+          <a class="chip" href="https://www.linkedin.com/in/jeevananthamsankaran/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="chip" href="https://jeevanathams07.artstation.com/" target="_blank" rel="noopener">ArtStation</a>
+        </div>
       </div>
     </section>
 
@@ -340,16 +345,6 @@
       const id = t.dataset.tab;
       panes.forEach(p => p.style.display = (p.dataset.pane === id) ? 'grid' : 'none');
     }));
-
-    // Cover: gentle crossfade to BG_2.JPG after 2s
-    const cover = document.getElementById('cover');
-    setTimeout(() => {
-      cover.classList.add('fade');
-      setTimeout(() => {
-        cover.style.backgroundImage = "url('./BG_2.JPG')";
-        cover.classList.remove('fade');
-      }, 600); // match CSS transition
-    }, 2000);
   </script>
 </body>
 </html>
