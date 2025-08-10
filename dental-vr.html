@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VR Dental Training Simulation — Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
   <style>
     :root{
       --bg:#f7f8fa;
@@ -29,7 +28,13 @@
     .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
     nav a{color:var(--text); padding:8px 10px; border-radius:8px}
     nav a:hover{background:#eef2f7; text-decoration:none}
-    .cover{height:min(36vh, 360px); background:#ddd url('assets/cover.jpg') center/cover no-repeat}
+
+    /* Cover hero */
+    .cover{
+      height:min(36vh, 360px);
+      background:#ddd url('assets/Dental_Front.png') center/cover no-repeat; /* <- your image as background */
+    }
+
     .titlerow{display:grid; grid-template-columns: 1fr 220px; gap:24px; margin-top: -36px; padding:18px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
     h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 6px}
     .intro{color:#374151}
@@ -37,7 +42,8 @@
     @media (max-width:900px){ .titlerow{ grid-template-columns:1fr } }
     section{padding:28px 0}
     h2{font-size:1.4rem; margin:0 0 12px}
-    /* Projects */
+
+    /* Cards (unused here but kept) */
     .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
     .card{grid-column:span 4; background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
     .thumb{aspect-ratio:16/9; background:#e5e7eb url('assets/project-thumb.jpg') center/cover no-repeat}
@@ -48,8 +54,10 @@
     .actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
     .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827; text-decoration:none}
     .btn:hover{background:#eef2f7}
+
     @media (max-width:1000px){ .card{grid-column:span 6} }
     @media (max-width:680px){ .card{grid-column:span 12} }
+
     /* Two column panels */
     .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
     @media (max-width:900px){ .two{grid-template-columns:1fr} }
@@ -58,11 +66,10 @@
     .row{display:flex; justify-content:space-between; gap:10px; align-items:center; border:1px solid var(--border); background:#fff; border-radius:12px; padding:10px 12px}
     .row .place{font-weight:700}
     .row .where{color:#6b7280}
-    /* Contact */
+
     .contact{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
     footer{padding:28px 0; color:#6b7280}
   </style>
-
 </head>
 <body>
   <header class="top">
@@ -74,7 +81,8 @@
     </div>
   </header>
 
-  <div class="cover" style="background-image:url('assets/dental-hero.jpg')"></div>
+  <!-- Hero cover uses Dental_Front.png -->
+  <div class="cover"></div>
 
   <main class="wrap">
     <div class="panel" style="margin-top:-30px">
@@ -88,15 +96,10 @@
       </p>
     </div>
 
-    <!-- Added image -->
-    <section>
-      <img src="assets/Dental_Front.png" alt="Dental VR Front View">
-    </section>
-
     <section class="two">
       <div class="panel">
         <h2>My role</h2>
-        <p>Scan cleanup/retopo; tool interactions; scenario steps & evaluation; lighting & materials.</p>
+        <p>Scan cleanup/retopo; tool interactions; scenario steps &amp; evaluation; lighting &amp; materials.</p>
       </div>
       <div class="panel">
         <h2>Tools / Stack</h2>
@@ -106,6 +109,7 @@
       </div>
     </section>
 
+    <!-- Kept only the bullet-point Process -->
     <section>
       <div class="panel">
         <h2>Process</h2>
@@ -118,7 +122,6 @@
         </ul>
       </div>
     </section>
-
   </main>
 </body>
 </html>
