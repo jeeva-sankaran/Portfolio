@@ -90,7 +90,14 @@
     </div>
   </header>
 
-  <div class="cover" style="background-image:url('BG_1.JPG')" title="Profile photo"></div>
+<div class="cover" id="cover" style="background-image:url('BG_1.JPG'); height:400px; background-size:cover; background-position:center;"></div>
+
+<script>
+  setTimeout(() => {
+    document.getElementById("cover").style.backgroundImage = "url('BG_2.JPG')";
+  }, 2000); // 2000 milliseconds = 2 seconds
+</script>
+
 
   <main class="wrap">
     <section>
