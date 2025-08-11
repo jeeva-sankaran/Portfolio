@@ -1,130 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ASTERS — Active Shooter Tracking & Evacuation Routing — Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f7f8fa;
-      --surface:#ffffff;
-      --muted:#6b7280;
-      --text:#111827;
-      --border:#e5e7eb;
-      --chip:#f1f5f9;
-      --brand:#2563eb;
-      --radius:12px;
-      --shadow:0 2px 8px rgba(0,0,0,.06);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--text); background:var(--bg); line-height:1.6}
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%; display:block}
-    .wrap{width:min(1100px,92vw); margin:0 auto}
-    header.top{position:sticky; top:0; z-index:10; background:rgba(247,248,250,.75); backdrop-filter:blur(8px); border-bottom:1px solid var(--border)}
-    .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
-    .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827; text-decoration:none}
-    .btn:hover{background:#eef2f7}
-    .hero{height:min(36vh,360px); background:#ddd center/cover no-repeat; background-image:url('A.png')}
-    main section{padding:28px 0}
-    .panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow)}
-    h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 8px}
-    h2{font-size:1.4rem; margin:0 0 12px}
-    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-    .tag{background:var(--chip); color:#374151; padding:6px 10px; border-radius:999px; font-size:.9rem}
-    .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    @media (max-width:900px){ .two{grid-template-columns:1fr} }
-    /* Workflow */
-    .wf-grid{display:grid; grid-template-columns:repeat(13,1fr); gap:8px; align-items:center}
-    .wf-card{grid-column:span 4; border:1px dashed var(--border); border-radius:12px; background:#fff; height:150px; overflow:hidden}
-    .wf-card img{width:100%; height:100%; object-fit:cover}
-    .wf-arrow{grid-column:span 1; text-align:center; color:#9ca3af; font-size:1.5rem}
-    footer{padding:28px 0; color:#6b7280; text-align:center}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASTERS — Active Shooter Tracking &amp; Evacuation Routing — Project</title>
+  <!-- Use shared dark theme stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="top">
-    <div class="wrap top-inner">
-      <!-- If this file sits in /projects, use href="../index.html" -->
-      <div class="crumbs"><a href="index.html">← Back</a></div>
-      <div class="btns">
-        <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
-        <a class="btn" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XUJs0Y8INELjnUNagX6r9uAhdaMSqK4y/view?usp=drive_link">Report</a>
+  <!-- Hero section without animated swirls -->
+  <header class="hero">
+    <nav class="navbar">
+      <div class="brand"><a href="creative.html">CreativePro</a></div>
+      <div><a href="creative.html">← Back</a></div>
+    </nav>
+    <div class="hero-content">
+      <h1 class="hero-title">ASTERS — Active Shooter Tracking &amp; Evacuation Routing</h1>
+      <p class="hero-tagline">Intelligent evacuation planning using real‑time tracking, pathfinding and LED guidance.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://youtu.be/vZf56XWqUsY" target="_blank" rel="noopener">Watch Video</a>
+        <a class="btn btn-secondary" href="https://drive.google.com/file/d/1XUJs0Y8INELjnUNagX6r9uAhdaMSqK4y/view?usp=drive_link" target="_blank" rel="noopener">Report</a>
       </div>
     </div>
+    <!-- Hero image for ASTERS -->
   </header>
 
-  <!-- Hero -->
-  <div class="hero" title="ASTERS hero"></div>
-
-  <main class="wrap">
-    <!-- Intro -->
-    <section>
-      <div class="panel" style="margin-top:-30px">
-        <h1>ASTERS — Active Shooter Tracking & Evacuation Routing</h1>
-        <div class="tags">
-          <span class="tag">Simulation</span>
-          <span class="tag">Unreal + Python</span>
-          <span class="tag">OpenCV</span>
-        </div>
+  <main>
+    <section class="section">
+      <div class="panel">
         <p>
-          Built to address intelligent evacuation planning during active threat scenarios. We combined Unreal Engine indoor
-          simulations with OpenCV shooter detection and Python-based egress algorithms. Real-time pathfinding and LED guidance
-          enable data-driven evaluation of safe escape strategies.
+          Built to address intelligent evacuation planning during active threat scenarios. We combined Unreal Engine indoor simulations with OpenCV shooter detection and Python‑based egress algorithms. Real‑time pathfinding and LED guidance enable data‑driven evaluation of safe escape strategies.
         </p>
         <p>
           <strong>Client:</strong> National Science Foundation (NSF)<br>
           <strong>Software:</strong> Unreal Engine, Python (OpenCV)<br>
           <strong>Type:</strong> Simulation<br>
-          <strong>Goal:</strong> Development of a real-time virtual simulation system for emergency evacuation.
+          <strong>Goal:</strong> Development of a real‑time virtual simulation system for emergency evacuation.
         </p>
       </div>
     </section>
 
-    <!-- Role / Tools -->
-    <section class="two">
-      <div class="panel">
-        <h2>My role</h2>
-        <p>Environment and behavior logic; camera tools; egress routing & LED guidance integration; logging & analysis pipeline.</p>
-      </div>
-      <div class="panel">
-        <h2>Tools / Stack</h2>
-        <p>Unreal Engine, Python, OpenCV, CSV logging, A* pathfinding</p>
-        <h2 style="margin-top:10px">Context</h2>
-        <p>University research on safe egress strategies under dynamic threats.</p>
+    <section class="section" style="padding-top:0;">
+      <div class="two-col">
+        <div class="panel">
+          <h2>My Role</h2>
+          <p>Environment and behaviour logic; camera tools; egress routing &amp; LED guidance integration; logging &amp; analysis pipeline.</p>
+        </div>
+        <div class="panel">
+          <h2>Tools / Stack</h2>
+          <p>Unreal Engine, Python, OpenCV, CSV logging, A* pathfinding</p>
+          <h2 style="margin-top:20px;">Context</h2>
+          <p>University research on safe egress strategies under dynamic threats.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Process (single) -->
-    <section>
+    <section class="section">
       <div class="panel">
         <h2>Process</h2>
         <ul>
           <li>Translate floor plans into a navigable 3D environment with NavMesh and agents.</li>
           <li>In Python/OpenCV, detect target events and stream positions into UE actors.</li>
-          <li>Run A* pathfinding to compute safe egress paths; drive dynamic LED guidance.</li>
-          <li>Provide researcher tools: camera presets, overlays, and heat-map visualizations.</li>
+          <li>Run A* pathfinding to compute safe egress paths and drive dynamic LED guidance.</li>
+          <li>Provide researcher tools: camera presets, overlays and heat‑map visualisations.</li>
           <li>Log each run to CSV for replay and parameter sweeps; tune performance and export video/report.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Workflow (updated paths & lazy-loading) -->
-   <!-- Workflow (single image only) -->
-<section>
-  <div class="panel">
-    <h2>Workflow</h2>
-    <div style="display:flex; justify-content:center;">
-      <img src="A-1.png" alt="Workflow" loading="lazy" 
-           style="max-width:100%; height:auto; border-radius:12px; border:1px solid var(--border); box-shadow:var(--shadow);">
-    </div>
-  </div>
-</section>
-  </main>
+    <!-- Workflow image with network nodes -->
+    <section class="section">
+      <div class="panel">
+        <h2>Workflow</h2>
+        <div style="display:flex; justify-content:center;">
+          <img src=".A-1.png" alt="Workflow" loading="lazy"
+               style="max-width:100%; height:auto; border-radius:12px; border:1px solid var(--border); box-shadow:var(--shadow);">
+        </div>
+      </div>
+    </section>
 
-  <footer>© 2025 Professional Portfolio</footer>
+    <footer class="section" style="text-align:center; color:var(--muted);">
+      &copy; <script>document.write(new Date().getFullYear());</script> CreativePro
+    </footer>
+  </main>
 </body>
 </html>
