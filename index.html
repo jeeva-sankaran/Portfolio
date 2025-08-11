@@ -14,7 +14,304 @@
     overwhelming the viewer with text up front.  The remainder of the page 
     preserves your projects, experience, skills, and contact information, but 
     they’ve been re‑styled to match the new dark colour palette and modern 
+    typographic system.  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jeevanantham Sankaran — Creative Portfolio</title>
+  <!--
+    This document presents a refreshed take on the original portfolio page.  
+    The layout has been redesigned from the ground up to feel more immersive and 
+    dynamic while still showcasing all of the same content from your previous site.  
+    A full‑screen hero area introduces visitors to your practice with an animated 
+    swirl surrounding your avatar.  Interactive call‑to‑action buttons invite 
+    exploration, and a collapsible About section adds a playful touch without 
+    overwhelming the viewer with text up front.  The remainder of the page 
+    preserves your projects, experience, skills, and contact information, but 
+    they’ve been re‑styled to match the new dark colour palette and modern 
     typographic system.  
+  -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hero section with animated swirls and call‑to‑action -->
+  <header class="hero">
+    <nav class="navbar">
+      <div class="brand">Jeevanantham</div>
+      <ul class="navlinks">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1 class="hero-title">Creative Technologist & VR Specialist</h1>
+      <p class="hero-tagline">Designing immersive experiences at the intersection of 
+        simulation, interaction and storytelling.</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn">About Me</a>
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+      </div>
+    </div>
+    <!-- The avatar sits at the centre of the hero and remains static while the swirls rotate -->
+    <img src="./Profile_1.png" alt="Profile illustration" class="hero-image" style="height:320px; width:auto; object-fit:contain;">
+    <!-- Swirling lines created purely with CSS borders.  Their animations are defined in the stylesheet. -->
+    <div class="swirl swirl1" aria-hidden="true"></div>
+    <div class="swirl swirl2" aria-hidden="true"></div>
+    <div class="swirl swirl3" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- Collapsible About section.  A button toggles the description open and closed. -->
+    <section id="about" class="section about">
+      <h2 class="section-title">About</h2>
+      <p id="about-text" class="about-text collapsed">
+        As a creative technologist and Unreal Engine specialist, I design immersive 
+        VR simulations that bridge real‑world challenges with virtual innovation.  
+        My work spans disaster response planning at IIT Bombay, emergency evacuation 
+        modelling at the University of Tennessee, and VR‑based training in 
+        healthcare and cultural storytelling.  I’m passionate about AR/VR, 
+        real‑time 3D and human‑centred design—focused on simulation, interaction and 
+        digital twins.
+      </p>
+      <button id="toggle-about" class="btn about-toggle" aria-expanded="false">
+        Read More
+      </button>
+    </section>
+
+    <!-- Projects grid.  Content is inherited from your original portfolio. -->
+    <section id="projects" class="section projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-thumb" style="background-image:url('./A.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">Design &amp; Analysis of Emergency Evacuation Simulations</h3>
+            <div class="card-tags">
+              <span class="tag">3D Environment</span>
+              <span class="tag">Simulation</span>
+              <span class="tag">Virtual Reality</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn" href="asters.html">Open</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb" style="background-image:url('./M.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">Maharashtra Truck Simulation</h3>
+            <div class="card-tags">
+              <span class="tag">Simulation</span>
+              <span class="tag">VR</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn" href="maharashtra-truck.html">Open</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/7zgsyIyo7qQ">Video</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb" style="background-image:url('./Dental_Front.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">Dental VR Project</h3>
+            <div class="card-tags">
+              <span class="tag">3D Environment</span>
+              <span class="tag">Virtual Reality</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn" href="dental-vr.html">Open</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/q3jmrM6cjmI">Video</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb" style="background-image:url('./Ravana_Front.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">VR Project (Ravana VR)</h3>
+            <div class="card-tags">
+              <span class="tag">Virtual Reality</span>
+              <span class="tag">Video Production</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn" href="ravana-vr.html">Open</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/1x3rMaC1Cc4">Video</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience and Certificates arranged in two columns on larger screens -->
+    <section id="experience" class="section experience">
+      <div class="two-col">
+        <div class="panel">
+          <h2 class="section-title">Experience</h2>
+          <ul class="list">
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">IIT Bombay</span>
+                <span class="where">Research Assistance — Mumbai, India</span>
+              </div>
+              <span class="when">Feb&nbsp;2025 – Present</span>
+            </li>
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">TechShiksha</span>
+                <span class="where">Instructor — Bangalore, India</span>
+              </div>
+              <span class="when">Aug&nbsp;2024 – Jan&nbsp;2025</span>
+            </li>
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">University of Tennessee</span>
+                <span class="where">Research Intern — Knoxville, USA</span>
+              </div>
+              <span class="when">Jul&nbsp;2024 – Dec&nbsp;2024</span>
+            </li>
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">Madras Minds</span>
+                <span class="where">Developer Intern — Chennai, India</span>
+              </div>
+              <span class="when">Feb&nbsp;2023</span>
+            </li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h2 class="section-title">Certificates</h2>
+          <ul class="list">
+            <li class="list-link"><a href="https://drive.google.com/file/d/12tJH4Idj9radkERzvRMg5j_Xq226ex0z/view" target="_blank" rel="noopener">Power BI Virtual Case Experience</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1zB0-2ZcGTslHxe_fjkGrRAcDYCDGDj6z/view" target="_blank" rel="noopener">Data Analysis with Python</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1UdzqObOXkEI7mgZtNXkWI7IjZar-VFgl/view" target="_blank" rel="noopener">The Fundamentals of Digital Marketing</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1WMFuPunrC_320Qk9R2JArqRWqQOrB60o/view" target="_blank" rel="noopener">Data Visualisation: Empowering Business with Effective Insights</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1EwrwHwmSnfBKFVH8LWdSbkytgYdUxcCe/view" target="_blank" rel="noopener">SQL for Data Analysis</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills section with tabs for categories -->
+    <section id="skills" class="section skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="expertise" role="tab" aria-selected="true">Expertise</button>
+        <button class="tab" data-tab="software" role="tab" aria-selected="false">Software</button>
+        <button class="tab" data-tab="language" role="tab" aria-selected="false">Language</button>
+      </div>
+      <div class="tiles" data-pane="expertise">
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./VE.webp')"></div>
+          <div class="tile-caption">Video Editing</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./PG.webp')"></div>
+          <div class="tile-caption">Photography</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./AI.webp')"></div>
+          <div class="tile-caption">Artificial Intelligence</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./ML.webp')"></div>
+          <div class="tile-caption">Machine Learning</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./DT.webp')"></div>
+          <div class="tile-caption">Digital Twin</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./AR.webp')"></div>
+          <div class="tile-caption">Augmented Reality</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./VR.webp')"></div>
+          <div class="tile-caption">Virtual Reality</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./PE.webp')"></div>
+          <div class="tile-caption">Prompt Engineering</div>
+        </div>
+      </div>
+      <div class="tiles" data-pane="software" style="display:none">
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./UE.webp')"></div>
+          <div class="tile-caption">Unreal Engine</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./B.webp')"></div>
+          <div class="tile-caption">Blender</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./Python.webp')"></div>
+          <div class="tile-caption">Python</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./AC.webp')"></div>
+          <div class="tile-caption">AutoCAD</div>
+        </div>
+      </div>
+      <div class="tiles" data-pane="language" style="display:none">
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./E.webp')"></div>
+          <div class="tile-caption">English</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./T.webp')"></div>
+          <div class="tile-caption">Tamil</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section using pill‑style links -->
+    <section id="contact" class="section contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-chips">
+        <a class="chip" href="mailto:jeevaofficial1407@gmail.com">Email: jeevaofficial1407@gmail.com</a>
+        <a class="chip" href="tel:+918838813020">Phone: +91&nbsp;8838813020</a>
+        <a class="chip" href="https://www.linkedin.com/in/jeevananthamsankaran/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip" href="https://jeevanathams07.artstation.com/" target="_blank" rel="noopener">ArtStation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Jeevanantham Sankaran</footer>
+
+  <!-- JavaScript for interactive elements -->
+  <script>
+    // Insert the current year into the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle the About section text when the button is clicked
+    const toggleBtn = document.getElementById('toggle-about');
+    const aboutText = document.getElementById('about-text');
+    toggleBtn.addEventListener('click', () => {
+      const collapsed = aboutText.classList.toggle('collapsed');
+      toggleBtn.textContent = collapsed ? 'Read More' : 'Show Less';
+      toggleBtn.setAttribute('aria-expanded', !collapsed);
+    });
+
+    // Skills tab switching
+    const tabButtons = document.querySelectorAll('.tab');
+    const panes = document.querySelectorAll('[data-pane]');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const selected = btn.dataset.tab;
+        // Show/hide panes
+        panes.forEach(p => {
+          p.style.display = (p.dataset.pane === selected) ? 'grid' : 'none';
+        });
+      }
   -->
   <link rel="stylesheet" href="style.css">
 </head>
