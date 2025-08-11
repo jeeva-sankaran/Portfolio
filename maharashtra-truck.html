@@ -1,136 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maharashtra Truck — Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f7f8fa;
-      --surface:#ffffff;
-      --muted:#6b7280;
-      --text:#111827;
-      --border:#e5e7eb;
-      --chip:#f1f5f9;
-      --brand:#2563eb;
-      --radius:12px;
-      --shadow:0 2px 8px rgba(0,0,0,.06);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text); background:var(--bg); line-height:1.6;
-    }
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%; display:block}
-    .wrap{width:min(1100px,92vw); margin:0 auto}
-    header.top{
-      position:sticky; top:0; z-index:10;
-      background:rgba(247,248,250,.75); backdrop-filter:blur(8px);
-      border-bottom:1px solid var(--border)
-    }
-    .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
-    .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827}
-    .btn:hover{background:#eef2f7}
-    .hero{
-      height:min(36vh,360px);
-      background:#ddd center/cover no-repeat;
-      background-image:url('M.png');
-    }
-    main section{padding:28px 0}
-    .panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow)}
-    h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 8px}
-    h2{font-size:1.4rem; margin:0 0 12px}
-    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-    .tag{background:var(--chip); color:#374151; padding:6px 10px; border-radius:999px; font-size:.9rem}
-    .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    @media (max-width:900px){ .two{grid-template-columns:1fr} }
-    footer{padding:28px 0; color:#6b7280; text-align:center}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maharashtra Truck Simulation — Project</title>
+  <!-- Use shared dark theme stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="top">
-    <div class="wrap top-inner">
-      <div class="crumbs"><a href="index.html">← Back</a></div>
-      <div class="btns">
-        <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
-        <a class="btn" target="_blank" rel="noopener" href="#">Report</a>
+  <!-- Hero section without animated swirls -->
+  <header class="hero">
+    <nav class="navbar">
+      <div class="brand"><a href="creative.html">CreativePro</a></div>
+      <div><a href="creative.html">← Back</a></div>
+    </nav>
+    <div class="hero-content">
+      <h1 class="hero-title">Maharashtra Truck Simulation</h1>
+      <p class="hero-tagline">A detailed virtual simulation of the Maharashtra truck transportation model.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://youtu.be/vZf56XWqUsY" target="_blank" rel="noopener">Watch Video</a>
+        <a class="btn btn-secondary" href="#" target="_blank" rel="noopener">Report</a>
       </div>
     </div>
+    <!-- Hero image for the truck project -->
+
   </header>
 
-  <!-- Hero -->
-  <img src="./M.png" alt="Profile illustration" class="hero-image" style="height:320px; width:auto; object-fit:contain;"><img src="./Profile_1.png" alt="Profile illustration" class="hero-image" style="height:320px; width:auto; object-fit:contain;">
-
-  <main class="wrap">
-    <!-- Intro -->
-    <section>
-      <div class="panel" style="margin-top:-30px">
-        <h1>Maharashtra Truck Project</h1>
-        <div class="tags">
-          <span class="tag">Vehicle Simulation</span>
-          <span class="tag">Unreal Engine</span>
-          <span class="tag">Blueprints</span>
-        </div>
+  <main>
+    <section class="section">
+      <div class="panel">
         <p>
-          A detailed virtual simulation of the Maharashtra truck transportation model, focusing on realistic road environments,
-          vehicle behavior, and operational logistics.
+          A detailed virtual simulation of the Maharashtra truck transportation model, focusing on realistic road environments, vehicle behaviour and operational logistics.
         </p>
         <p>
           <strong>Client:</strong> Transport Authority of Maharashtra<br>
           <strong>Software:</strong> Unreal Engine<br>
           <strong>Type:</strong> Simulation<br>
-          <strong>Goal:</strong> Create an interactive and visually accurate simulation for training and visualization purposes.
+          <strong>Goal:</strong> Create an interactive and visually accurate simulation for training and visualisation purposes.
         </p>
       </div>
     </section>
 
-    <!-- Role / Tools -->
-    <section class="two">
-      <div class="panel">
-        <h2>My role</h2>
-        <p>Modeled vehicle assets, implemented driving physics, developed environment and road network, and scripted interactive scenarios.</p>
-      </div>
-      <div class="panel">
-        <h2>Tools / Stack</h2>
-        <p>Unreal Engine, Blueprints, Material Editor</p>
-        <h2 style="margin-top:10px">Context</h2>
-        <p>Simulation project for optimizing road transport visualization.</p>
+    <section class="section" style="padding-top:0;">
+      <div class="two-col">
+        <div class="panel">
+          <h2>My Role</h2>
+          <p>Modelled vehicle assets, implemented driving physics, developed environment and road network, and scripted interactive scenarios.</p>
+        </div>
+        <div class="panel">
+          <h2>Tools / Stack</h2>
+          <p>Unreal Engine, Blueprints, Material Editor</p>
+          <h2 style="margin-top:20px;">Context</h2>
+          <p>Simulating complex transport operations in an Indian setting for safety and training.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Process -->
-    <section>
+    <section class="section">
       <div class="panel">
         <h2>Process</h2>
         <ul>
           <li>Design truck and environmental assets with realistic textures.</li>
           <li>Set up driving mechanics and physics using Unreal Engine Blueprints.</li>
           <li>Integrate camera systems for multiple viewing modes.</li>
-          <li>Test and refine simulation to ensure accuracy and performance.</li>
+          <li>Test and refine the simulation to ensure accuracy and performance.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Workflow (single image only, responsive 1234×510) -->
-    <section>
-      <div class="panel">
-        <h2>Workflow</h2>
-        <div style="display:flex; justify-content:center;">
-          <img
-            src="M-1.png"
-            alt="Workflow"
-            loading="lazy"
-            style="max-width:100%; height:auto; border-radius:12px; border:1px solid var(--border); box-shadow:var(--shadow);"
-          >
-        </div>
-      </div>
-    </section>
+    <footer class="section" style="text-align:center; color:var(--muted);">
+      &copy; <script>document.write(new Date().getFullYear());</script> CreativePro
+    </footer>
   </main>
-
-  <footer>© 2025 Professional Portfolio</footer>
 </body>
 </html>
