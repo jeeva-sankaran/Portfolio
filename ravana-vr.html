@@ -3,64 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ravana VR — Cinematic Showcase</title>
-  <!--
-    This project page adopts the dark, immersive style of the main portfolio.
-    A swirling hero section introduces the project with a succinct tagline
-    and call‑to‑action buttons.  Detailed information about the client,
-    tools and processes is presented in clean panels below.
-  -->
+  <title>Ravana VR — Cinematic Showcase — Project</title>
+  <!-- Use shared dark theme stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Hero section without animated swirls -->
   <header class="hero">
     <nav class="navbar">
-      <div class="brand"><a href="creative2.html" style="color:inherit;text-decoration:none">CreativePro</a></div>
-      <ul class="navlinks">
-        <li><a href="creative2.html">← Back</a></li>
-      </ul>
+      <div class="brand"><a href="creative.html">CreativePro</a></div>
+      <div><a href="creative.html">← Back</a></div>
     </nav>
     <div class="hero-content">
       <h1 class="hero-title">Ravana VR — Cinematic Showcase</h1>
       <p class="hero-tagline">An immersive VR cinematic combining animation, stage‑like lighting and synchronized audio.</p>
       <div class="hero-cta">
-        <a href="https://youtu.be/1x3rMaC1Cc4" class="btn" target="_blank" rel="noopener">Watch Video</a>
+        <a class="btn" href="https://youtu.be/1x3rMaC1Cc4" target="_blank" rel="noopener">Watch Video</a>
       </div>
     </div>
-    <!-- Use a cosmic swirl as the hero graphic for this project -->
-    <img src="./p4.png" alt="Ravana VR preview" class="hero-image" style="height:320px;width:auto;object-fit:cover;">
-    <div class="swirl swirl1" aria-hidden="true"></div>
-    <div class="swirl swirl2" aria-hidden="true"></div>
-    <div class="swirl swirl3" aria-hidden="true"></div>
+    <!-- Hero image for Ravana VR -->
+    <img src="./p4.png" alt="Ravana VR preview" class="hero-image" style="height:340px; width:auto; object-fit:cover;">
   </header>
 
   <main>
-    <!-- Project overview -->
     <section class="section">
       <div class="panel">
         <p>Immersive VR cinematic based on the character Ravana for a college event—combining animation, stage‑like lighting, and synchronized audio to deliver a visually rich experience with detailed environments and timed sequences.</p>
-        <p><strong>Client:</strong> University purpose (showcase)<br>
-           <strong>Software:</strong> Unreal Engine, Blender<br>
-           <strong>Type:</strong> Virtual Reality<br>
-           <strong>Goal:</strong> Create an immersive, cinematic VR experience for cultural storytelling.</p>
+        <p>
+          <strong>Client:</strong> University purpose (showcase)<br>
+          <strong>Software:</strong> Unreal Engine, Blender<br>
+          <strong>Type:</strong> Virtual Reality<br>
+          <strong>Goal:</strong> Create an immersive, cinematic VR experience for cultural storytelling.
+        </p>
       </div>
     </section>
-    <!-- Role and tools -->
-    <section class="section">
+
+    <section class="section" style="padding-top:0;">
       <div class="two-col">
         <div class="panel">
           <h2>My Role</h2>
-          <p>Environment lookdev, animation/sequencing, lighting, audio sync, real‑time polish.</p>
+          <p>Environment lookdev, animation/sequencing, lighting, audio sync and real‑time polish.</p>
         </div>
         <div class="panel">
           <h2>Tools / Stack</h2>
           <p>Unreal Engine, Blender, Sequencer</p>
-          <h2 style="margin-top:10px">Context</h2>
+          <h2 style="margin-top:20px;">Context</h2>
           <p>Showcase project to bring mythology to life with modern VR visuals.</p>
         </div>
       </div>
     </section>
-    <!-- Process -->
+
     <section class="section">
       <div class="panel">
         <h2>Process</h2>
@@ -72,11 +64,10 @@
         </ul>
       </div>
     </section>
-  </main>
 
-  <footer class="footer">© <span id="year"></span> CreativePro</footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <footer class="section" style="text-align:center; color:var(--muted);">
+      &copy; <script>document.write(new Date().getFullYear());</script> CreativePro
+    </footer>
+  </main>
 </body>
 </html>
