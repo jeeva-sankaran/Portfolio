@@ -1,350 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Professional Portfolio — Jeevanantham</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <meta name="color-scheme" content="light">
-  <style>
-    :root{
-      --bg:#f7f8fa;
-      --surface:#ffffff;
-      --muted:#6b7280;
-      --text:#111827;
-      --border:#e5e7eb;
-      --chip:#f1f5f9;
-      --brand:#2563eb;
-      --radius:12px;
-      --shadow:0 6px 24px rgba(2,6,23,.06);
-      --shadow-hover:0 10px 28px rgba(2,6,23,.10);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; color:var(--text); background:var(--bg);
-      font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      line-height:1.6;
-    }
-    img{max-width:100%; display:block}
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{width:min(1100px, 92vw); margin:0 auto}
-
-    /* Top bar */
-    header.top{
-      position:sticky; top:0; z-index:10;
-      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid var(--border)
-    }
-    .top-inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px}
-    nav a{color:var(--text); padding:8px 10px; border-radius:8px}
-    nav a:hover{background:#eef2f7; text-decoration:none}
-
-    /* Cover — fixed image, no fading */
-    .cover{
-      height:clamp(220px,36vh,420px);
-      background:url('./BG_1.JPG') center/cover no-repeat;
-      border-bottom:1px solid var(--border);
-    }
-
-    /* Title row */
-    .titlerow{
-      display:grid; grid-template-columns: 1fr 220px; gap:24px;
-      margin-top:-36px; padding:18px; background:var(--surface);
-      border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow)
-    }
-    h1{font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; margin:0 0 6px}
-    .intro{color:#374151}
-    .portrait{
-      width:100%; aspect-ratio:3/4; border-radius:14px; overflow:hidden;
-      border:1px solid var(--border); background:url('./Profile.jpg') center/cover no-repeat;
-    }
-    @media (max-width:900px){ .titlerow{ grid-template-columns:1fr } }
-
-    section{padding:28px 0}
-    h2{font-size:1.4rem; margin:0 0 12px}
-
-    /* Cards */
-    .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
-    .card{
-      grid-column:span 4; background:var(--surface);
-      border:1px solid var(--border); border-radius:16px; overflow:hidden;
-      box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease
-    }
-    .card:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
-    .thumb{aspect-ratio:16/9; background:#e5e7eb center/cover no-repeat}
-    .meta{padding:12px 14px}
-    .title{font-weight:700}
-    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-    .tag{background:var(--chip); color:#374151; padding:6px 10px; border-radius:999px; font-size:.85rem}
-    .actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
-    .btn{padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:#f8fafc; color:#111827}
-    .btn:hover{background:#eef2f7}
-    @media (max-width:1000px){ .card{grid-column:span 6} }
-    @media (max-width:680px){ .card{grid-column:span 12} }
-
-    /* Two columns */
-    .two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-    @media (max-width:900px){ .two{grid-template-columns:1fr} }
-    .panel{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow)}
-    .list{display:grid; gap:10px}
-    .row{
-      display:flex; justify-content:space-between; gap:10px; align-items:center;
-      border:1px solid var(--border); background:#fff; border-radius:12px; padding:10px 12px
-    }
-    .row .place{font-weight:700}
-    .row .where{color:#6b7280}
-    .row .when{color:#6b7280; font-size:.9rem}
-
-    /* Skills */
-    .tabs{display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap}
-    .tab{padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:#fff; cursor:pointer}
-    .tab.active{background:#eef2f7}
-    .tiles{display:grid; grid-template-columns:repeat(12,1fr); gap:12px}
-    .tile{grid-column:span 3; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff}
-    .tile .ph{aspect-ratio:16/9; background:#e5e7eb center/cover no-repeat}
-    .tile .cap{padding:10px 12px; font-weight:600}
-    @media (max-width:1000px){ .tile{grid-column:span 4} }
-    @media (max-width:680px){ .tile{grid-column:span 6} }
-
-    /* Contact — simple chips */
-    .contact{background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border:1px solid var(--border); border-radius:999px;
-      background:#fff; color:#111827; text-decoration:none
-    }
-    .chip:hover{background:#f3f4f6}
-    footer{padding:28px 0; color:#6b7280}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jeevanantham Sankaran — Creative Portfolio</title>
+  <!--
+    This document presents a refreshed take on the original portfolio page.  
+    The layout has been redesigned from the ground up to feel more immersive and 
+    dynamic while still showcasing all of the same content from your previous site.  
+    A full‑screen hero area introduces visitors to your practice with an animated 
+    swirl surrounding your avatar.  Interactive call‑to‑action buttons invite 
+    exploration, and a collapsible About section adds a playful touch without 
+    overwhelming the viewer with text up front.  The remainder of the page 
+    preserves your projects, experience, skills, and contact information, but 
+    they’ve been re‑styled to match the new dark colour palette and modern 
+    typographic system.  
+  -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="top">
-    <div class="wrap top-inner">
-      <div><strong>Jeevanantham</strong></div>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- Hero section with animated swirls and call‑to‑action -->
+  <header class="hero">
+    <nav class="navbar">
+      <div class="brand">Jeevanantham</div>
+      <ul class="navlinks">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1 class="hero-title">Creative Technologist & VR Specialist</h1>
+      <p class="hero-tagline">Designing immersive experiences at the intersection of 
+        simulation, interaction and storytelling.</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn">About Me</a>
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+      </div>
     </div>
+    <!-- The avatar sits at the centre of the hero and remains static while the swirls rotate -->
+    <img src="./c6c12abc-a8b5-4eb0-8f27-d721d9cab05b.png" alt="VR avatar" class="hero-image">
+    <!-- Swirling lines created purely with CSS borders.  Their animations are defined in the stylesheet. -->
+    <div class="swirl swirl1" aria-hidden="true"></div>
+    <div class="swirl swirl2" aria-hidden="true"></div>
+    <div class="swirl swirl3" aria-hidden="true"></div>
   </header>
 
-  <!-- Fixed cover (no fade) -->
-  <div class="cover" title="Hero background"></div>
-
-  <main class="wrap">
-    <!-- Title -->
-    <section>
-      <div class="titlerow">
-        <div>
-          <h1>Professional Portfolio</h1>
-          <p class="intro">
-            As a creative technologist and Unreal Engine specialist, I design immersive VR simulations that bridge real-world
-            challenges with virtual innovation. My work spans disaster response planning at IIT Bombay, emergency evacuation
-            modeling at the University of Tennessee, and VR-based training in healthcare and cultural storytelling. I’m passionate
-            about AR/VR, real-time 3D, and human-centered design—focused on simulation, interaction, and digital twins.
-          </p>
-        </div>
-        <div class="portrait" title="Profile photo"></div>
-      </div>
+  <main>
+    <!-- Collapsible About section.  A button toggles the description open and closed. -->
+    <section id="about" class="section about">
+      <h2 class="section-title">About</h2>
+      <p id="about-text" class="about-text collapsed">
+        As a creative technologist and Unreal Engine specialist, I design immersive 
+        VR simulations that bridge real‑world challenges with virtual innovation.  
+        My work spans disaster response planning at IIT Bombay, emergency evacuation 
+        modelling at the University of Tennessee, and VR‑based training in 
+        healthcare and cultural storytelling.  I’m passionate about AR/VR, 
+        real‑time 3D and human‑centred design—focused on simulation, interaction and 
+        digital twins.
+      </p>
+      <button id="toggle-about" class="btn about-toggle" aria-expanded="false">
+        Read More
+      </button>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="cards">
+    <!-- Projects grid.  Content is inherited from your original portfolio. -->
+    <section id="projects" class="section projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="card-grid">
         <article class="card">
-          <div class="thumb" style="background-image:url('./A.png')"></div>
-          <div class="meta">
-            <div class="title">Design & Analysis of Emergency Evacuation Simulations</div>
-            <div class="tags">
+          <div class="card-thumb" style="background-image:url('./A.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">Design &amp; Analysis of Emergency Evacuation Simulations</h3>
+            <div class="card-tags">
               <span class="tag">3D Environment</span>
               <span class="tag">Simulation</span>
               <span class="tag">Virtual Reality</span>
             </div>
-            <div class="actions">
+            <div class="card-actions">
               <a class="btn" href="asters.html">Open</a>
-              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/vZf56XWqUsY">Video</a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="thumb" style="background-image:url('./M.png')"></div>
-          <div class="meta">
-            <div class="title">Maharashtra Truck Simulation</div>
-            <div class="tags">
+          <div class="card-thumb" style="background-image:url('./M.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">Maharashtra Truck Simulation</h3>
+            <div class="card-tags">
               <span class="tag">Simulation</span>
               <span class="tag">VR</span>
             </div>
-            <div class="actions">
+            <div class="card-actions">
               <a class="btn" href="maharashtra-truck.html">Open</a>
-              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/7zgsyIyo7qQ">Video</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/7zgsyIyo7qQ">Video</a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="thumb" style="background-image:url('./Dental_Front.png')"></div>
-          <div class="meta">
-            <div class="title">Dental VR Project</div>
-            <div class="tags">
+          <div class="card-thumb" style="background-image:url('./Dental_Front.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">Dental VR Project</h3>
+            <div class="card-tags">
               <span class="tag">3D Environment</span>
               <span class="tag">Virtual Reality</span>
             </div>
-            <div class="actions">
+            <div class="card-actions">
               <a class="btn" href="dental-vr.html">Open</a>
-              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/q3jmrM6cjmI">Video</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/q3jmrM6cjmI">Video</a>
             </div>
           </div>
         </article>
-
         <article class="card">
-          <div class="thumb" style="background-image:url('./Ravana_Front.png')"></div>
-          <div class="meta">
-            <div class="title">VR Project (Ravana VR)</div>
-            <div class="tags">
+          <div class="card-thumb" style="background-image:url('./Ravana_Front.png')"></div>
+          <div class="card-body">
+            <h3 class="card-title">VR Project (Ravana VR)</h3>
+            <div class="card-tags">
               <span class="tag">Virtual Reality</span>
               <span class="tag">Video Production</span>
             </div>
-            <div class="actions">
+            <div class="card-actions">
               <a class="btn" href="ravana-vr.html">Open</a>
-              <a class="btn" target="_blank" rel="noopener" href="https://youtu.be/1x3rMaC1Cc4">Video</a>
+              <a class="btn btn-link" target="_blank" rel="noopener" href="https://youtu.be/1x3rMaC1Cc4">Video</a>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <div class="two">
+    <!-- Experience and Certificates arranged in two columns on larger screens -->
+    <section id="experience" class="section experience">
+      <div class="two-col">
         <div class="panel">
-          <h2>Experience</h2>
-          <div class="list">
-            <div class="row">
-              <div>
-                <div class="place">IIT Bombay</div>
-                <div class="where">Research Assistance — Mumbai, India</div>
-                <div class="when">Duration: Feb 2025 – Present</div>
+          <h2 class="section-title">Experience</h2>
+          <ul class="list">
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">IIT Bombay</span>
+                <span class="where">Research Assistance — Mumbai, India</span>
               </div>
-            </div>
-            <div class="row">
-              <div>
-                <div class="place">TechShiksha</div>
-                <div class="where">Instructor — Bangalore, India</div>
-                <div class="when">Duration: Aug 2024 – Jan 2025</div>
+              <span class="when">Feb&nbsp;2025 – Present</span>
+            </li>
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">TechShiksha</span>
+                <span class="where">Instructor — Bangalore, India</span>
               </div>
-            </div>
-            <div class="row">
-              <div>
-                <div class="place">University of Tennessee</div>
-                <div class="where">Research Intern — Knoxville, USA</div>
-                <div class="when">Duration: Jul 2024 – Dec 2024</div>
+              <span class="when">Aug&nbsp;2024 – Jan&nbsp;2025</span>
+            </li>
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">University of Tennessee</span>
+                <span class="where">Research Intern — Knoxville, USA</span>
               </div>
-            </div>
-            <div class="row">
-              <div>
-                <div class="place">Madras Minds</div>
-                <div class="where">Developer Intern — Chennai, India</div>
-                <div class="when">Duration: Feb 2023</div>
+              <span class="when">Jul&nbsp;2024 – Dec&nbsp;2024</span>
+            </li>
+            <li class="list-item">
+              <div class="item-main">
+                <span class="place">Madras Minds</span>
+                <span class="where">Developer Intern — Chennai, India</span>
               </div>
-            </div>
-          </div>
+              <span class="when">Feb&nbsp;2023</span>
+            </li>
+          </ul>
         </div>
-
-        <!-- Certificates -->
         <div class="panel">
-          <h2>Certificates</h2>
-          <div class="list">
-            <a class="row" href="https://drive.google.com/file/d/12tJH4Idj9radkERzvRMg5j_Xq226ex0z/view" target="_blank" rel="noopener">
-              <div>Power BI Virtual Case Experience</div>
-            </a>
-            <a class="row" href="https://drive.google.com/file/d/1zB0-2ZcGTslHxe_fjkGrRAcDYCDGDj6z/view" target="_blank" rel="noopener">
-              <div>Data Analysis with Python</div>
-            </a>
-            <a class="row" href="https://drive.google.com/file/d/1UdzqObOXkEI7mgZtNXkWI7IjZar-VFgl/view" target="_blank" rel="noopener">
-              <div>The Fundamentals of Digital Marketing</div>
-            </a>
-            <a class="row" href="https://drive.google.com/file/d/1WMFuPunrC_320Qk9R2JArqRWqQOrB60o/view" target="_blank" rel="noopener">
-              <div>Data Visualisation: Empowering Business with Effective Insights</div>
-            </a>
-            <a class="row" href="https://drive.google.com/file/d/1EwrwHwmSnfBKFVH8LWdSbkytgYdUxcCe/view" target="_blank" rel="noopener">
-              <div>SQL for Data Analysis</div>
-            </a>
-            <!-- Removed: duplicate "Data Analysis Using Python" and "Industrial Training on IoT with Smart Devices" -->
-          </div>
+          <h2 class="section-title">Certificates</h2>
+          <ul class="list">
+            <li class="list-link"><a href="https://drive.google.com/file/d/12tJH4Idj9radkERzvRMg5j_Xq226ex0z/view" target="_blank" rel="noopener">Power BI Virtual Case Experience</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1zB0-2ZcGTslHxe_fjkGrRAcDYCDGDj6z/view" target="_blank" rel="noopener">Data Analysis with Python</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1UdzqObOXkEI7mgZtNXkWI7IjZar-VFgl/view" target="_blank" rel="noopener">The Fundamentals of Digital Marketing</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1WMFuPunrC_320Qk9R2JArqRWqQOrB60o/view" target="_blank" rel="noopener">Data Visualisation: Empowering Business with Effective Insights</a></li>
+            <li class="list-link"><a href="https://drive.google.com/file/d/1EwrwHwmSnfBKFVH8LWdSbkytgYdUxcCe/view" target="_blank" rel="noopener">SQL for Data Analysis</a></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="tabs">
-        <button class="tab active" data-tab="expertise">Expertise</button>
-        <button class="tab" data-tab="software">Software</button>
-        <button class="tab" data-tab="language">Language</button>
+    <!-- Skills section with tabs for categories -->
+    <section id="skills" class="section skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="expertise" role="tab" aria-selected="true">Expertise</button>
+        <button class="tab" data-tab="software" role="tab" aria-selected="false">Software</button>
+        <button class="tab" data-tab="language" role="tab" aria-selected="false">Language</button>
       </div>
-
       <div class="tiles" data-pane="expertise">
-        <div class="tile"><div class="ph" style="background:url('./VE.webp') center/cover no-repeat"></div><div class="cap">Video Editing</div></div>
-        <div class="tile"><div class="ph" style="background:url('./PG.webp') center/cover no-repeat"></div><div class="cap">Photography</div></div>
-        <div class="tile"><div class="ph" style="background:url('./AI.webp') center/cover no-repeat"></div><div class="cap">Artificial Intelligence</div></div>
-        <div class="tile"><div class="ph" style="background:url('./ML.webp') center/cover no-repeat"></div><div class="cap">Machine Learning</div></div>
-        <div class="tile"><div class="ph" style="background:url('./DT.webp') center/cover no-repeat"></div><div class="cap">Digital Twin</div></div>
-        <div class="tile"><div class="ph" style="background:url('./AR.webp') center/cover no-repeat"></div><div class="cap">Augmented Reality</div></div>
-        <div class="tile"><div class="ph" style="background:url('./VR.webp') center/cover no-repeat"></div><div class="cap">Virtual Reality</div></div>
-        <div class="tile"><div class="ph" style="background:url('./PE.webp') center/cover no-repeat"></div><div class="cap">Prompt Engineering</div></div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./VE.webp')"></div>
+          <div class="tile-caption">Video Editing</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./PG.webp')"></div>
+          <div class="tile-caption">Photography</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./AI.webp')"></div>
+          <div class="tile-caption">Artificial Intelligence</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./ML.webp')"></div>
+          <div class="tile-caption">Machine Learning</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./DT.webp')"></div>
+          <div class="tile-caption">Digital Twin</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./AR.webp')"></div>
+          <div class="tile-caption">Augmented Reality</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./VR.webp')"></div>
+          <div class="tile-caption">Virtual Reality</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./PE.webp')"></div>
+          <div class="tile-caption">Prompt Engineering</div>
+        </div>
       </div>
-
       <div class="tiles" data-pane="software" style="display:none">
-        <div class="tile"><div class="ph" style="background:url('./UE.webp') center/cover no-repeat"></div><div class="cap">Unreal Engine</div></div>
-        <div class="tile"><div class="ph" style="background:url('./B.webp') center/cover no-repeat"></div><div class="cap">Blender</div></div>
-        <div class="tile"><div class="ph" style="background:url('./Python.webp') center/cover no-repeat"></div><div class="cap">Python</div></div>
-        <div class="tile"><div class="ph" style="background:url('./AC.webp') center/cover no-repeat"></div><div class="cap">AutoCAD</div></div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./UE.webp')"></div>
+          <div class="tile-caption">Unreal Engine</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./B.webp')"></div>
+          <div class="tile-caption">Blender</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./Python.webp')"></div>
+          <div class="tile-caption">Python</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./AC.webp')"></div>
+          <div class="tile-caption">AutoCAD</div>
+        </div>
       </div>
-
       <div class="tiles" data-pane="language" style="display:none">
-        <div class="tile"><div class="ph" style="background:url('./E.webp') center/cover no-repeat"></div><div class="cap">English</div></div>
-        <div class="tile"><div class="ph" style="background:url('./T.webp') center/cover no-repeat"></div><div class="cap">Tamil</div></div>
-      </div>
-    </section>
-
-    <!-- Contact (simple chips) -->
-    <section id="contact">
-      <div class="contact">
-        <h2>Contact</h2>
-        <div class="chips">
-          <a class="chip" href="mailto:jeevaofficial1407@gmail.com">Email: jeevaofficial1407@gmail.com</a>
-          <a class="chip" href="tel:+918838813020">Phone: +91 8838813020</a>
-          <a class="chip" href="https://www.linkedin.com/in/jeevananthamsankaran/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="chip" href="https://jeevanathams07.artstation.com/" target="_blank" rel="noopener">ArtStation</a>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./E.webp')"></div>
+          <div class="tile-caption">English</div>
+        </div>
+        <div class="tile">
+          <div class="tile-thumb" style="background-image:url('./T.webp')"></div>
+          <div class="tile-caption">Tamil</div>
         </div>
       </div>
     </section>
 
-    <footer>© <span id="y"></span> Jeevanantham Sankaran</footer>
+    <!-- Contact section using pill‑style links -->
+    <section id="contact" class="section contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-chips">
+        <a class="chip" href="mailto:jeevaofficial1407@gmail.com">Email: jeevaofficial1407@gmail.com</a>
+        <a class="chip" href="tel:+918838813020">Phone: +91&nbsp;8838813020</a>
+        <a class="chip" href="https://www.linkedin.com/in/jeevananthamsankaran/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="chip" href="https://jeevanathams07.artstation.com/" target="_blank" rel="noopener">ArtStation</a>
+      </div>
+    </section>
   </main>
 
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
+  <footer class="footer">© <span id="year"></span> Jeevanantham Sankaran</footer>
 
-    // Skills tabs
-    const tabs = document.querySelectorAll('.tab');
+  <!-- JavaScript for interactive elements -->
+  <script>
+    // Insert the current year into the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle the About section text when the button is clicked
+    const toggleBtn = document.getElementById('toggle-about');
+    const aboutText = document.getElementById('about-text');
+    toggleBtn.addEventListener('click', () => {
+      const collapsed = aboutText.classList.toggle('collapsed');
+      toggleBtn.textContent = collapsed ? 'Read More' : 'Show Less';
+      toggleBtn.setAttribute('aria-expanded', !collapsed);
+    });
+
+    // Skills tab switching
+    const tabButtons = document.querySelectorAll('.tab');
     const panes = document.querySelectorAll('[data-pane]');
-    tabs.forEach(t => t.addEventListener('click', () => {
-      tabs.forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      const id = t.dataset.tab;
-      panes.forEach(p => p.style.display = (p.dataset.pane === id) ? 'grid' : 'none');
-    }));
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const selected = btn.dataset.tab;
+        // Show/hide panes
+        panes.forEach(p => {
+          p.style.display = (p.dataset.pane === selected) ? 'grid' : 'none';
+        });
+      });
+    });
   </script>
 </body>
 </html>
