@@ -9,15 +9,22 @@
 
 /* Colour variables allow easy theme adjustments */
 :root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --accent: #00b48a;
-  --brand: #2f81f7;
-  --border: rgba(255,255,255,0.1);
+  /* Core palette inspired by neon VR aesthetics */
+  --bg: #050c1b;               /* deep navy for dark mode */
+  --bg-gradient: radial-gradient(circle at 20% 30%, rgba(30,0,58,0.6), rgba(0,77,122,0.3) 80%), linear-gradient(135deg, #1e003a, #004d7a);
+  --surface: rgba(255,255,255,0.12); /* slightly more opaque for glass cards */
+  --text: #e8f2ff;             /* light blue-white for high contrast */
+  --muted: #8fa9c9;            /* soft blue-gray for secondary text */
+  --accent: #b445ff;           /* neon purple for accents */
+  --brand: #00d1ff;            /* neon cyan for primary actions */
+  --border: rgba(255,255,255,0.12);
   --radius: 12px;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  --blur: 16px;
+  /* Additional accent colours for gradient animations */
+  --accent-alt: #ff5cf4;     /* neon pink for highlights */
+  --glow: rgba(0, 209, 255, 0.4); /* subtle glow for effects */
+  --glass-bg: rgba(255, 255, 255, 0.08); /* semi‑transparent surface for glassmorphism */
 }
 
 /* Reset some default styles */
@@ -34,6 +41,37 @@ body {
   color: var(--text);
   background-color: var(--bg);
   line-height: 1.6;
+  /* Provide a context for the animated gradient pseudo‑element and prevent horizontal scroll. */
+  position: relative;
+  overflow-x: hidden;
+
+  /* Hide the default cursor so our glowing cursor takes centre stage. */
+  cursor: none;
+}
+
+/* Animated gradient background for the body.  The :before pseudo‑element sits behind all
+   content and shifts its background position over time to create a hypnotic, VR‑inspired
+   atmosphere. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(130deg, var(--accent) 0%, var(--accent-alt) 25%, var(--brand) 50%, var(--accent) 75%, var(--accent-alt) 100%);
+  background-size: 400% 400%;
+  animation: moveGradient 20s linear infinite;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 a {
   color: var(--brand);
@@ -56,10 +94,12 @@ a:hover {
   font-weight: 600;
   transition: background-color 0.2s ease, transform 0.2s ease;
   cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 209, 255, 0.25), 0 0 24px rgba(180, 69, 255, 0.2);
 }
 .btn:hover {
-  background-color: #1f6fd1;
-  transform: translateY(-2px);
+  background-color: var(--brand);
+  box-shadow: 0 0 20px var(--brand), 0 0 40px var(--brand);
+  transform: translateY(-3px) scale(1.02);
 }
 .btn:active {
   transform: translateY(0);
@@ -68,9 +108,10 @@ a:hover {
   background-color: transparent;
   color: var(--brand);
   border-color: var(--brand);
+  box-shadow: none;
 }
 .btn-secondary:hover {
-  background-color: rgba(47, 129, 247, 0.1);
+  background-color: rgba(0, 209, 255, 0.1);
 }
 .btn-link {
   background: transparent;
@@ -85,18 +126,22 @@ a:hover {
 
 /* Navbar */
 .navbar {
-  position: absolute;
+  /* Make the navigation bar fixed to stay in view as users explore the page. A semi‑transparent
+     background and blur create a glassy floating effect. Drop shadows subtly lift the nav
+     from the background. */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 40px;
+  padding: 16px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
-  backdrop-filter: blur(8px);
-  background: rgba(13,17,23,0.6);
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba(5, 12, 27, 0.6);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 .brand {
   font-weight: 800;
@@ -127,19 +172,24 @@ a:hover {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 120px 40px 80px;
+  padding: 160px 40px 100px;
   text-align: center;
+  /* perspective provides a sense of depth for any 3D‑transformed elements within the hero */
+  perspective: 1200px;
 }
 .hero-title {
   font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-weight: 800;
   margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 .hero-tagline {
   max-width: 650px;
-  color: var(--muted);
+  /* Use the main text colour for stronger contrast against the animated gradient */
+  color: var(--text);
   font-size: 1.1rem;
   margin: 0 auto 24px;
+  text-shadow: 0 0 6px rgba(0,0,0,0.5);
 }
 .hero-cta {
   display: flex;
@@ -148,13 +198,14 @@ a:hover {
   flex-wrap: wrap;
 }
 .hero-image {
-  position: absolute;
-  bottom: 0;
-  width: 50%;
-  max-width: 420px;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
   pointer-events: none;
   user-select: none;
+  margin-top: 40px;
+  width: 260px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
 }
 
 /* Swirl animations.  Each swirl is an elliptical ring that rotates slowly around the avatar. */
@@ -203,6 +254,8 @@ a:hover {
   padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
+  /* Offset anchor scrolling to account for the fixed navigation bar */
+  scroll-margin-top: 100px;
 }
 .section-title {
   font-size: 1.6rem;
@@ -249,6 +302,7 @@ a:hover {
   flex-direction: column;
   box-shadow: var(--shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  backdrop-filter: blur(var(--blur)) saturate(130%);
 }
 .card:hover {
   transform: translateY(-4px);
@@ -302,6 +356,7 @@ a:hover {
   border-radius: var(--radius);
   padding: 24px;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur)) saturate(130%);
 }
 .list {
   list-style: none;
@@ -370,6 +425,7 @@ a:hover {
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(var(--blur)) saturate(130%);
 }
 .tile:hover {
   transform: translateY(-4px);
@@ -403,6 +459,7 @@ a:hover {
   border-radius: 999px;
   color: var(--text);
   transition: background-color 0.2s ease;
+  backdrop-filter: blur(var(--blur)) saturate(130%);
 }
 .chip:hover {
   background-color: rgba(255,255,255,0.05);
@@ -435,4 +492,60 @@ a:hover {
     width: 480px;
     height: 200px;
   }
+}
+
+/* === Additional immersive elements === */
+
+/* Floating ambient shapes in the hero.  These glowing circles drift slowly to add depth
+   and motion to the landing section.  They are injected as <span class="float"> elements
+   in the markup.  See index.html for structure. */
+.float {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--accent), transparent 70%);
+  opacity: 0.6;
+  filter: blur(2px);
+  animation: floatUpDown 8s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.float:nth-child(1) { width: 220px; height: 220px; top: 10%; left: 15%; animation-duration: 12s; }
+.float:nth-child(2) { width: 140px; height: 140px; top: 70%; left: 70%; animation-duration: 10s; animation-delay: 2s; }
+.float:nth-child(3) { width: 180px; height: 180px; top: 40%; left: 80%; animation-duration: 14s; animation-delay: 1s; }
+.float:nth-child(4) { width: 100px; height: 100px; top: 80%; left: 25%; animation-duration: 9s; animation-delay: 3s; }
+.float:nth-child(5) { width: 160px; height: 160px; top: 20%; left: 80%; animation-duration: 13s; animation-delay: 4s; }
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(20px, -40px, 50px); }
+}
+
+/* Scroll reveal animation.  Elements marked with the .reveal class start invisible and
+   slide up gently when a .show class is added via IntersectionObserver in JavaScript. */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom cursor trail.  A glowing dot follows the user's mouse across the screen.
+   The mix-blend-mode difference inverts colours behind the dot for a high‑tech feel. */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--brand);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  mix-blend-mode: difference;
+  z-index: 1000;
+  box-shadow: 0 0 8px var(--brand), 0 0 15px var(--accent);
 }
