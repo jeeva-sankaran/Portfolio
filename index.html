@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jeevanantham Sankaran — Creative Portfolio</title>
+  <title>Jeevanantham Sankaran - Portfolio </title>
   <!--
     This document presents a refreshed take on the original portfolio page.  
     The layout has been redesigned from the ground up to feel more immersive and 
@@ -39,17 +39,23 @@
         <a href="#projects" class="btn btn-secondary">View Projects</a>
       </div>
     </div>
-    <!-- The avatar sits at the centre of the hero and remains static while the swirls rotate -->
-     <img src="./Profile_1.png" alt="Profile illustration" class="hero-image" style="height:320px; width:auto; object-fit:contain; bottom:-60px;">
-    <!-- Swirling lines created purely with CSS borders.  Their animations are defined in the stylesheet. -->
-    <div class="swirl swirl1" aria-hidden="true"></div>
-    <div class="swirl swirl2" aria-hidden="true"></div>
-    <div class="swirl swirl3" aria-hidden="true"></div>
+    <!-- The avatar sits at the centre of the hero.  Inline sizing is removed so CSS controls the
+         dimensions.  A gentle drop shadow enhances depth. -->
+    <img src="./Profile_1.png" alt="Profile illustration" class="hero-image">
+
+    <!-- Ambient floating shapes replace the original swirl animations.  These spans are
+         positioned and animated via CSS to drift slowly around the hero, evoking a
+         futuristic VR atmosphere. -->
+    <span class="float"></span>
+    <span class="float"></span>
+    <span class="float"></span>
+    <span class="float"></span>
+    <span class="float"></span>
   </header>
 
   <main>
     <!-- Collapsible About section.  A button toggles the description open and closed. -->
-    <section id="about" class="section about">
+    <section id="about" class="section about reveal">
       <h2 class="section-title">About</h2>
       <p id="about-text" class="about-text collapsed">
         As a creative technologist and Unreal Engine specialist, I design immersive 
@@ -66,7 +72,7 @@
     </section>
 
     <!-- Projects grid.  Content is inherited from your original portfolio. -->
-    <section id="projects" class="section projects">
+    <section id="projects" class="section projects reveal">
       <h2 class="section-title">Projects</h2>
       <div class="card-grid">
         <article class="card">
@@ -130,7 +136,7 @@
     </section>
 
     <!-- Experience and Certificates arranged in two columns on larger screens -->
-    <section id="experience" class="section experience">
+    <section id="experience" class="section experience reveal">
       <div class="two-col">
         <div class="panel">
           <h2 class="section-title">Experience</h2>
@@ -179,7 +185,7 @@
     </section>
 
     <!-- Skills section with tabs for categories -->
-    <section id="skills" class="section skills">
+    <section id="skills" class="section skills reveal">
       <h2 class="section-title">Skills</h2>
       <div class="tabs" role="tablist">
         <button class="tab active" data-tab="expertise" role="tab" aria-selected="true">Expertise</button>
@@ -251,7 +257,7 @@
     </section>
 
     <!-- Contact section using pill‑style links -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="section contact reveal">
       <h2 class="section-title">Contact</h2>
       <div class="contact-chips">
         <a class="chip" href="mailto:jeevaofficial1407@gmail.com">Email: jeevaofficial1407@gmail.com</a>
@@ -297,6 +303,28 @@
         });
       });
     });
+
+    // Scroll reveal: observe each element with the .reveal class and add the .show class
+    // when it enters the viewport.  This triggers a fade/slide animation defined in CSS.
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+
+    // Custom cursor: update the position of the glowing dot as the mouse moves.
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
   </script>
+
+  <!-- Glowing cursor that follows the user's mouse.  Defined in CSS and positioned via JS. -->
+  <div class="cursor"></div>
 </body>
 </html>
